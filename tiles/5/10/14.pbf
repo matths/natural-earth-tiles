@@ -1,0 +1,713 @@
+��x
+	countries(� 
+featurecla	scalerank	LABELRANK
+SOVEREIGNTSOV_A3ADM0_DIFLEVELTYPETLCADMINADM0_A3GEOU_DIFGEOUNITGU_A3SU_DIFSUBUNITSU_A3BRK_DIFFNAME	NAME_LONGBRK_A3BRK_NAMEABBREVPOSTAL	FORMAL_EN
+NAME_CIAWF	NOTE_ADM0	NAME_SORT	MAPCOLOR7	MAPCOLOR8	MAPCOLOR9
+MAPCOLOR13POP_ESTPOP_RANKPOP_YEARGDP_MDGDP_YEARECONOMY
+INCOME_GRPFIPS_10ISO_A2	ISO_A2_EHISO_A3	ISO_A3_EHISO_N3	ISO_N3_EHUN_A3WB_A2WB_A3WOE_ID	WOE_ID_EHWOE_NOTEADM0_ISOADM0_TLC
+ADM0_A3_US
+ADM0_A3_FR
+ADM0_A3_RU
+ADM0_A3_ES
+ADM0_A3_CN
+ADM0_A3_TW
+ADM0_A3_IN
+ADM0_A3_NP
+ADM0_A3_PK
+ADM0_A3_DE
+ADM0_A3_GB
+ADM0_A3_BR
+ADM0_A3_IL
+ADM0_A3_PS
+ADM0_A3_SA
+ADM0_A3_EG
+ADM0_A3_MA
+ADM0_A3_PT
+ADM0_A3_AR
+ADM0_A3_JP
+ADM0_A3_KO
+ADM0_A3_VN
+ADM0_A3_TR
+ADM0_A3_ID
+ADM0_A3_PL
+ADM0_A3_GR
+ADM0_A3_IT
+ADM0_A3_NL
+ADM0_A3_SE
+ADM0_A3_BD
+ADM0_A3_UA
+ADM0_A3_UN
+ADM0_A3_WB	CONTINENT	REGION_UN	SUBREGION	REGION_WBNAME_LENLONG_LEN
+ABBREV_LENTINYHOMEPARTMIN_ZOOM	MIN_LABEL	MAX_LABELLABEL_XLABEL_YNE_ID
+WIKIDATAIDNAME_ARNAME_BNNAME_DENAME_ENNAME_ESNAME_FANAME_FRNAME_ELNAME_HENAME_HINAME_HUNAME_IDNAME_ITNAME_JANAME_KONAME_NLNAME_PLNAME_PTNAME_RUNAME_SVNAME_TRNAME_UKNAME_URNAME_VINAME_ZHNAME_ZHT
+FCLASS_ISO
+FCLASS_TLC	FORMAL_FR"
+1"
+F"
+AC"
+AG"
+AI"
+AV"
+BB"
+BL"
+DM"
+DO"
+FR"
+GD"
+GJ"
+KN"
+LC"
+MF"
+MH"
+MS"
+NL"
+NT"
+PR"
+RN"
+RQ"
+SC"
+ST"
+SX"
+TB"
+TD"
+TT"
+VC"
+VE"
+VG"
+VI"
+VQ"
+-99"
+028"
+052"
+092"
+212"
+250"
+308"
+500"
+528"
+534"
+630"
+652"
+659"
+660"
+662"
+663"
+670"
+780"
+850"
+862"
+AIA"
+ATG"
+BLM"
+BRB"
+DMA"
+FR1"
+FRA"
+Fr."
+GB1"
+GRD"
+KNA"
+LCA"
+MAF"
+MSR"
+NL1"
+NLD"
+PRI"
+Q55"
+SXM"
+TTO"
+URY"
+US1"
+VCT"
+VEN"
+VGB"
+VIR"
+Ang."
+P.R."
+Q142"
+Q244"
+Q717"
+Q754"
+Q757"
+Q760"
+Q763"
+Q769"
+Q781"
+Q784"
+S.L."
+U.K."
+Ven."
+Barb."
+Gren."
+Neth."
+Pháp"
+Q1183"
+Tr.T."
+Ant.B."
+D'inca"
+Europe"
+France"
+Fransa"
+Monts."
+Q11703"
+Q13353"
+Q25228"
+Q25305"
+Q25362"
+Q26273"
+St. B."
+St. M."
+U.S.A."
+法国"
+法國"
+荷兰"
+荷蘭"	
+Anguila"	
+Barbade"	
+Belanda"	
+Country"	
+Francia"	
+Francja"	
+França"	
+Granada"	
+Grenada"	
+Grenade"	
+Hà Lan"	
+Prancis"	
+Q126125"	
+St.K.N."	
+St.V.G."
+
+Americas"
+
+Anguilla"
+
+Barbados"
+
+Dominica"
+
+Dominika"
+
+Holandia"
+
+Hollanda"
+
+Pays-Bas"
+
+צרפת"
+
+هلند"
+	Caribbean"
+	Dominique"
+	Frankrijk"
+	Frankrike"
+	Hollandia"
+	Nederland"
+	Portoryko"
+	St-Martin"
+	St. Lucia"
+	Venezuela"
+	Wenezuela"
+	安吉拉"
+	安圭拉"
+	巴貝多"
+	蒙哲臘"
+	앵귈라"
+	프랑스"
+
+Dependency"
+
+Frankreich"
+
+Montserrat"
+
+Porto Rico"
+
+Porto Riko"
+
+V.I. (Br.)"
+
+גרנדה"
+
+הולנד"
+
+فرانس"
+
+فرنسا"
+Netherlands"
+Niederlande"
+Paesi Bassi"
+Puerto Rico"
+Puerto Riko"
+Saint Lucia"
+San Martín"
+V.I. (U.S.)"
+Saint Martin"
+Saint-Martin"
+Sainte-Lucie"
+Santa Lucía"
+Santa Lúcia"
+Sint Maarten"
+Sint-Maarten"
+Γαλλία"
+ברבדוס"
+فرانسه"
+هولندا"
+گرنادا"
+アンギラ"
+オランダ"
+グレナダ"
+フランス"
+圣卢西亚"
+多米尼克"
+委內瑞拉"
+委内瑞拉"
+巴巴多斯"
+格林纳达"
+格瑞那達"
+波多黎各"
+聖巴瑟米"
+聖露西亞"
+그레나다"
+네덜란드"
+몬트세랫"
+생마르탱"
+North America"
+Países Bajos"
+South America"
+São Martinho"
+Venezuela, RB"
+סן מרטן"
+Franciaország"
+Nederländerna"
+Países Baixos"
+San Bartolomé"
+St-Barthélemy"
+United Kingdom"
+Virgin Islands"
+Western Europe"
+Γρενάδα"
+Ангилья"
+Ангілья"
+Гренада"
+Франция"
+Франція"
+ונצואלה"
+آنگویلا"
+أنغويلا"
+غرينادا"
+فنزويلا"
+ونزوئلا"
+گریناڈا"
+Admin-0 country"
+French Republic"
+U.S. Virgin Is."
+ドミニカ国"
+バルバドス"
+ベネズエラ"
+圣巴泰勒米"
+法属圣马丁"
+法屬聖馬丁"
+荷属圣马丁"
+荷屬聖馬丁"
+蒙特塞拉特"
+바베이도스"
+베네수엘라"
+신트마르턴"
+Saint Barthelemy"
+Δομινίκα"
+Ολλανδία"
+Барбадос"
+Доминика"
+Домініка"
+אנגווילה"
+דומיניקה"
+מונטסראט"
+اینگویلا"
+باربادوس"
+بارباڈوس"
+دومينيكا"
+دومینیکا"
+مانٹسریٹ"
+مونتسرات"
+ڈومینیکا"
+Antigua and Barb."
+Antigua e Barbuda"
+Antigua i Barbuda"
+Antigua y Barbuda"
+Saint Barthélemy"
+Saint-Barthélemy"
+Sovereign country"
+Trinidad e Tobago"
+Trinidad y Tobago"
+Trynidad i Tobago"
+סן ברתלמי"
+סנט לוסיה"
+סנט מארטן"
+سنت لوسیا"
+سنٹ مارٹن"
+Admin-0 dependency"
+Antigua en Barbuda"
+Antigua ve Barbuda"
+Antigua-et-Barbuda"
+Antígua e Barbuda"
+British Virgin Is."
+St. Vin. and Gren."
+Trinidad en Tobago"
+Trinidad ve Tobago"
+Trinité-et-Tobago"
+Ανγκουίλα"
+Венесуела"
+Венесуэла"
+بورتوريكو"
+نیدرلینڈز"
+وینیزویلا"
+پورتوریکو"
+セントルシア"
+プエルトリコ"
+モントセラト"
+美屬維京群島"
+英屬維京群島"
+생바르텔레미"
+세인트루시아"
+푸에르토리코"
+ABD Virjin Adaları"
+Antigua and Barbuda"
+Antigua dan Barbuda"
+Antigua och Barbuda"
+Antigua und Barbuda"
+Antigua và Barbuda"
+Antigua és Barbuda"
+Saint Kitts e Nevis"
+Saint Kitts i Nevis"
+St. Kitts and Nevis"
+St. Kitts und Nevis"
+Trinidad and Tobago"
+Trinidad dan Tobago"
+Trinidad och Tobago"
+Trinidad und Tobago"
+Trinidad và Tobago"
+Trinidad és Tobago"
+Сен-Мартен"
+Сент-Люсия"
+Сент-Люсія"
+سانت لوسيا"
+سينت مارتن"
+سینت مارتن"
+سینٹ لوسیا"
+سینٹ مارٹن"
+پورٹو ریکو"
+도미니카 연방"
+앤티가 바부다"
+1. High income: OECD"
+6. Developing region"
+Brit Virgin-szigetek"
+Saint Kitts en Nevis"
+Saint Kitts ve Nevis"
+Βενεζουέλα"
+Μοντσερράτ"
+Монтсеррат"
+Нидерланды"
+Нідерланди"
+Dominikai Közösség"
+Europe & Central Asia"
+Saint Kitts and Nevis"
+Saint Kitts dan Nevis"
+Saint Kitts och Nevis"
+Saint Kitts và Nevis"
+Saint Kitts és Nevis"
+Virgin Islands (U.S.)"
+Αγία Λουκία"
+Пуерто-Рико"
+Пуэрто-Рико"
+Синт-Мартен"
+Сінт-Мартен"
+פוארטו ריקו"
+سنت بارثلمی"
+अंगुइला"
+ফ্রান্স"
+サン・マルタン"
+千里達及托巴哥"
+圣基茨和尼维斯"
+安地卡及巴布達"
+安提瓜和巴布达"
+美属维尔京群岛"
+英属维尔京群岛"
+3. Upper middle income"
+4. Lower middle income"
+British Virgin Islands"
+Britse Maagdeneilanden"
+Μπαρμπάντος"
+1. Developed region: G7"
+2. High income: nonOECD"
+5. Emerging region: G20"
+Brittiska Jungfruöarna"
+Isole Vergini americane"
+San Cristóbal y Nieves"
+Πουέρτο Ρίκο"
+سان بارتيلمي"
+Amerikai Virgin-szigetek"
+Britanya Virjin Adaları"
+Britische Jungferninseln"
+Commonwealth of Dominica"
+Ilhas Virgens Americanas"
+St. Maarten (Dutch part)"
+St. Martin (French part)"
+São Cristóvão e Nevis"
+United States of America"
+ग्रेनाडा"
+डोमिनिका"
+फ़्रान्स"
+बारबाडोस"
+গ্রেনাডা"
+ডোমিনিকা"
+特立尼达和多巴哥"
+聖文森及格瑞那丁"
+Amerikanska Jungfruöarna"
+Ilhas Virgens Britânicas"
+Isole Vergini britanniche"
+Latin America & Caribbean"
+Saint Vincent e Grenadine"
+Saint Vincent i Grenadyny"
+Sint Maarten (Dutch part)"
+São Vicente e Granadinas"
+Сен-Бартелеми"
+Сен-Бартельмі"
+세인트키츠 네비스"
+트리니다드 토바고"
+2. Developed region: nonG7"
+Brytyjskie Wyspy Dziewicze"
+Exact WOE match as country"
+Kingdom of the Netherlands"
+Saint-Martin (French part)"
+îles Vierges britanniques"
+Amerikaanse Maagdeneilanden"
+Commonwealth of Puerto Rico"
+Islas Vírgenes Británicas"
+Saint Vincent dan Grenadine"
+Άγιος Μαρτίνος"
+טרינידד וטובגו"
+سنت کیتس و نویس"
+سینٹ بارتھیملے"
+नीदरलैण्ड"
+বার্বাডোস"
+মন্টসেরাট"
+シント・マールテン"
+Amerikanische Jungferninseln"
+Saint Vincent ve Grenadinler"
+Saint Vincent và Grenadines"
+Saint-Christophe-et-Niévès"
+San Vicente y las Granadinas"
+United States Virgin Islands"
+סנט קיטס ונוויס"
+تجمع سان مارتين"
+미국령 버진아일랜드"
+영국령 버진아일랜드"
+îles Vierges des États-Unis" 
+Kepulauan Virgin Britania Raya" 
+Saint Vincent en de Grenadines" 
+Saint Vincent och Grenadinerna" 
+St. Vincent and the Grenadines" 
+St. Vincent und die Grenadinen" 
+سانت كيتس ونيفيس" 
+मॉण्टसेराट" 
+वेनेज़ुएला" 
+サン・バルテルミー島" 
+トリニダード・トバゴ" 
+圣文森特和格林纳丁斯" 
+聖克里斯多福與尼維斯"!
+Coletividade de São Bartolomeu"!
+Republic of Trinidad and Tobago"!
+Saint-Vincent-et-les-Grenadines"!
+Сент-Китс и Невис"!
+אנטיגואה וברבודה"!
+أنتيغوا وباربودا"!
+ترينيداد وتوباغو"!
+سینٹ کیٹز و ناویس"!
+पोर्टो रीको"!
+सेंट लूसिया"!
+세인트빈센트 그레나딘""
+ Bolivarian Republic of Venezuela""
+ Kepulauan Virgin Amerika Serikat""
+ Quần đảo Virgin thuộc Anh""
+ Saint Vincent and the Grenadines""
+ Антигуа и Барбуда""
+ Антигуа і Барбуда""
+ Тринидад и Тобаго""
+ Тринідад і Тобаго""
+ آنتیگوا و باربودا""
+ امریکی جزائر ورجن""
+ ترینیداد و توباگو""
+ سنت مارتین فرانسه""
+ ٹرینیڈاڈ و ٹوباگو"#
+!Quần đảo Virgin thuộc Mỹ"#
+!Сент-Кіттс і Невіс"#
+!এ্যাঙ্গুইলা"#
+!ভেনেজুয়েলা"$
+"اینٹیگوا و باربوڈا"$
+"برطانوی جزائر ورجن"$
+"सिंट मार्टेन"%
+#Federation of Saint Kitts and Nevis"%
+#República Bolivariana de Venezuela"%
+#Virgin Islands of the United States"%
+#Άγιος Βαρθολομαίος"&
+$איי הבתולה הבריטיים"&
+$アメリカ領ヴァージン諸島"&
+$アンティグア・バーブーダ"&
+$イギリス領ヴァージン諸島"'
+%Islas Vírgenes de los Estados Unidos"'
+%Wyspy Dziewicze Stanów Zjednoczonych"'
+%সিন্ট মার্টেন"'
+%সেন্ট লুসিয়া"'
+%সেন্ট-মার্টিন"(
+&Saint Vincent és a Grenadine-szigetek")
+'নেদারল্যান্ডস"*
+(סנט וינסנט והגרנדינים"*
+(جزایر ویرجین بریتانیا"*
+(جزر العذراء الأمريكية"*
+(পুয়ের্তো রিকো"+
+)سنت وینسنت و گرنادینها",
+*جزر العذراء البريطانية"-
++सेंट बार्थेलेमी".
+,Τρινιντάντ και Τομπάγκο".
+,سانت فينسنت والغرينادين"/
+-Сент-Винсент и Гренадины"/
+-Сент-Вінсент і Гренадини"/
+-セントクリストファー・ネイビス"0
+.איי הבתולה של ארצות הברית"0
+.সেন্ট-বার্থেলেমি"1
+/جزایر ویرجین ایالات متحده"1
+/سینٹ وینسینٹ و گریناڈائنز"2
+0Αντίγκουα και Μπαρμπούντα"2
+0Βρετανικές Παρθένοι Νήσοι"2
+0セントビンセント・グレナディーン"4
+2ত্রিনিদাদ ও টোবাগো"5
+3Άγιος Χριστόφορος και Νέβις"5
+3सन्त किट्स और नेविस"5
+3সেন্ট কিট্স ও নেভিস"6
+4Expired subunits of Netherlands Antilles (23424914)."6
+4Αμερικανικές Παρθένοι Νήσοι"7
+5Includes only Metropolitan France (including Corsica)"7
+5अण्टीगुआ और बारबूडा"7
+5त्रिनिदाद और टोबैगो":
+8Британские Виргинские острова":
+8Британські Віргінські острови";
+9Άγιος Βικέντιος και Γρεναδίνες">
+<Американские Виргинские острова">
+<Американські Віргінські Острови"F
+Dब्रिटिश वर्जिन द्वीपसमूह"F
+Dঅ্যান্টিগুয়া ও বার্বুডা"G
+Eसेंट मार्टिन की सामूहिकता"L
+Jব্রিটিশ ভার্জিন দ্বীপপুঞ্জ"L
+Jমার্কিন ভার্জিন দ্বীপপুঞ্জ"M
+Kসেন্ট ভিনসেন্ট ও গ্রেনাডাইন"V
+Tसंयुक्त राज्य वर्जिन द्वीपसमूह"V
+Tसन्त विन्सेण्ट और ग्रेनाडाइन्स"]
+[Doesn't include new former units of Netherlands Antilles (24549811, 24549808, and 24549809)"  A"   @"  �@"  �@"	 6 B\&P�"	G6m2@"	���ɞP�"	�;YG@"	��:-*@"		5C�(V1@"	��X�N�"	�;�O�"	��(�1@"	*���S*@"	-?p�'�N�"	2�	���+@"	333333�?"	78�ں@"	>�N��9(@"	A�شR�O�"	_}<��1P�"	b�*�3>2@"	h�>��O�"	n��Sr@"	r75�2@"	w��6J@"	x��,Z1@"	|�w
+2@"	�D����M�"	���7�(P�"	��%�2�N�"	��Q,��0@"	��z���.@"	�R�!�uN�"	��^�s}N�"	�&SaO�"	� w�jO�"	�j����1@"	������@"	������@"	���o�%@"	�q�_�O�"	�/�'k@"	�j�3<2@"	�\m���N�"  " " " " " " " " " 	" 
+" " " " " " " " " " " " "  " ," ��" ���" ��" ��" ��" �s" ���" �ߕ" �" ���" ���" ���" ���" ���" ���" ��" �" ��U" ��" �ޕ" �	" ���" �ߕ" �$" ��7" �ߕ" �" ���" ��" �" �ޕ" ��" �ߕ" �" ���" �	" �ޕ" ���" ���" �ߕ" ���" ���" ���" ���" î�" �" �" ͽ" ��" �ߕ" �" �ߕ" �ߕ" �" �(" �ߕ" �" ��" ���" ߧ�" �" �" �ݕ" �" �" �" �ߕ" �M" ��" ���" �ݕ" �" �ݕ" ���" �" ���" �ޕ" �" ��" �ޥ" �" ���"0�"0��� ����K��� 	�
+F��F��F���F�Q��s����� �!�"�#�$�%�&�'()*F+F,,-,.,/0F1�2�3�4F5F6F7F8F9F:F;F<F=F>F?F@FAFBFCFDFEFFFGFHFIFJFKFLFMFNFOFPFQFRFSFTFU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fcg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"�	���	&LL	$
+R<
+>: 	&
+
+
+   P
+	2
+
+
+* 
+
+
+
+ 
+3(	%/ )		#%)
+ 		)	 	 
+ + /	! "			  3/4 	�	��"
+( [		j�j&
+	  	 	�� ����K��� 	�
+O��O��O���O�� ��s����� �!�"�#�$�%�&�'!( ) *O+O,4-4.4/ 0O1�2�3�4O5O6O7O8O9O:O;O<O=O>O?O@OAOBOCODOEOFOGOHOIOJOKOLOMONOOOPOQOROSOTOU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fkg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"~	���
+ =� + 	"�r0	
+#		
+		��6 
+ 		�� ����>��� 	�
+N��N��N���N����]����� �!�"�#�$�%�&�' ()*N+N,%-%.%/"0"1�2�3�4N5N6N7N8N9N:N;N<N=N>N?N@NANBNCNDNENFNGNHNINJNKNLNMNNNONPNQNRNSNTNU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fng�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"�	��2	K�		
+	
+'
+	 
+	��2
+/		<�Z
+	
+( 	�&*
+	�!" �� ����>��� 	�
+6��6��6���6�P�]����� �!�"�#�$�%�&�'()*6+6,/-/.//"0"1�2�3�465666768696:6;6<6=6>6?6@6A6B6C6D6E6F6G6H6I6J6K6L6M6N6O6P6Q6R6S6T6U�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fmg�h�i�j�kxl�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"T	��b -		$		B2 	�   		   	)"	 �� ���h;��� 	�
+B��B��B���B�r��=����� �!�"�#�$�%�&�'()*B+B,1-1.1/0B1�2�3�4B5B6B7B8B9B:B;B<B=B>B?B@BABBBCBDBEBFBGBHBIBJBKBLBMBNBOBPBQBRBSBTBU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�f�g�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"!	��j>1 "
+	�� ����D��{ 	�
+H��H��H���H�r��a����� �!�"�#�$�%�&�'()*H+H,+-+.+/0H1�2�3�4H5H6H7H8H9H:H;H<H=H>H?H@HAHBHCHDHEHFHGHHHIHJHKHLHMHNHOHPHQHRHSHTHU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fpg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"	��22	/	�� ���h;��� 	�
+8��8��8���8�q��=����� �!�"�#�$�%�&�'()*8+8,---.-/"0"1�2�3�485868788898:8;8<8=8>8?8@8A8B8C8D8E8F8G8H8I8J8K8L8M8N8O8P8Q8R8S8T8U�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fog�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"	��26
+	 �� ����@��� 	�
+@��@��@���@��������� �!�"�#�$�%�&�'()*@+@,.-.../0@1�2�3�4@5@6@7@8@9@:@;@<@=@>@?@@@A@B@C@D@E@F@G@H@I@J@K@L@M@N@O@P@Q@R@S@T@U�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fXg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"G	��R
+!	���H,, 		 	�� ����>��� 	�
+C��C��C���C�j�]����� �!�"�#�$�%�&�'()*C+C,)-).)/"0"1�2�3�4C5C6C7C8C9C:C;C<C=C>C?C@CACBCCCDCECFCGCHCICJCKCLCMCNCOCPCQCRCSCTCU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�flg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"	��Z&#	#�� ����7��� 	�
+7��7��7���7�e������� �!�"�#�$�%�&�'()*7+7,#-#.#/071�2�3�475767778797:7;7<7=7>7?7@7A7B7C7D7E7F7G7H7I7J7K7L7M7N7O7P7Q7R7S7T7U�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fZg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"�	�� 	���
+		
+
+ 	
+  
+			��	
+
+ 		 %!�� ����:��� 	�
+:��:��:���:�f������� �!�"�#�$�%�&�'	()*:+:,&-&.&/0:1�2�3�4:5:6:7:8:9:::;:<:=:>:?:@:A:B:C:D:E:F:G:H:I:J:K:L:M:N:O:P:Q:R:S:T:U�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�f[g�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"T	�"�%�
+
+&& 
+<	 		1'		 	�� ����L��� 	�
+L��L��L���L��������� �!�"�#�$�%�&�'()*L+L,2-2.2/0L1�2�3�4L5L6L7L8L9L:L;L<L=L>L?L@LALBLCLDLELFLGLHLILJLKLLLMLNLOLPLQLRLSLTLU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fVg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"~	�"�72	b]:
+	
+	pu" 		�j
+	
+  
+ 	4��  .	.
++
+	
+�� ����A��� 	�
+A��A��A���A�\������� �!�"�#�$�%�&�'()*A+A,0-0.0/0A1�2�3�4A5A6A7A8A9A:A;A<A=A>A?A@AAABACADAEAFAGAHAIAJAKALAMANAOAPAQARASATAU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fWg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"8	�%�.�R:"	$	"	5#%�� ����?��� 	�
+?��?��?���?�`������� �!�"�#�$�%�&�'()*?+?,(-(.(/0?1�2�3�4?5?6?7?8?9?:?;?<?=?>???@?A?B?C?D?E?F?G?H?I?J?K?L?M?N?O?P?Q?R?S?T?U�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fYg�h�i�j�kl�m�n�o�p�q�r�s�t�u�v�w�xy�z�{�|�}�~��������"W	�!�9�
+$	  
+ 		 *3	��J,#
+	 	�� ����9��� 	�
+9��9��9���9�_������� �!�"�#�$�%�&�'()*9+9,$-$.$/091�2�3�495969798999:9;9<9=9>9?9@9A9B9C9D9E9F9G9HJI9J9K9L9M9N9O9P9Q9R9S9T9U�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fSg�h�i�j�k�l�myn�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"0	�,�3�
+2"&92	e 		
+�� ����M��� 	�
+M��M��M���M�^��������� �!�"�#�$�%�&�'()*M+M,5-5.5/0M1�2�3�4M5M6M7M8M9M:M;M<M=M>M?M@MAMBMCMDMEMFMGMHMIMJMKMLMMMNMOMPMQMRMSMTMU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fTg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"�	��A"
+Q 	���8, � � %$
+ 
+
+ 	&'	��R  /
+	�.: 	� b  		K:%!
+ 	WN	�a
+	�� �� ����I��� 	�
+I��I��I���I�d������� �!�"�#�$�%�&�'()*I+I,3-3.3/0I1�2�3�4I5I6I7I8I9I:I;I<I=I>I?I@IAIBICIDIEIFIGIHIIIJIKILIMINIOIPIQIRISITIU�V�W�X�Y�Z�[�\�]�^�_�`�a�b�c�d�e�fUg�h�i�j�k�l�m�n�o�p�q�r�s�t�u�v�w�x�y�z�{�|�}�~��������"<	�'�?�()			
+>'> �� ���h;��{ 	h
+<�h<�h<�hh<h=�hh���� �!�"�#�$�%�&�'
+(")
+*"+<,"-'.'/
+0<1�2�3�4<5<6<7<8<9<:<;<<<=<><?<@<A<B<C<D<E<F<G<H<I<J<K<L<M<N<O<P<Q<R<S<T<U�V�WgXgY�Z�[�\�]�^�_�`�a�b�c�d�e�fRg�h�i�jhk|l�mhn�o�p�q�r�s|t�u�v�w}x~y�z�{i|�}�~bt�u����"�	�$�*�"( 	 	  
+
+
+	
+
+$	
+		 	  +
+ 		
+	 # 	'		#- 	���.
+	 $
+*(!#	;	#	
+	�s�& J4 %	 	3 ) 	��z
+
+	
+	��*#
+&	��*		0*�� ����D��{ 	�
+E��E��E���E�a������� �!�"�#�$�%�&�'()*E+E,*-*.*/0E1�2�3�4E5E6E7E8E9E:E;E<E=E>E?E@EAEBECEDEEEFEGEHEIEJEKELEMENEOEPEQERESETEU�V�WgXgY�Z�[�\�]�^�_�`�a�b�c�d�e�fGg�h�i�j�k�l�m�n�o�p�q�rzs�t�u�v�w�x�y�z�{�|�}�~�v�w����"'	��:
+
+
+		�u2
+	
