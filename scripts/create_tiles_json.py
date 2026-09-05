@@ -3,10 +3,15 @@ import json
 import sys
 import os
 
+# Anchored to the repo root (parent of this scripts/ dir) so the script works
+# no matter where it is invoked from; the Makefile overrides everything anyway.
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+
 base_url = 'https://matths.github.io/natural-earth-tiles/tiles/'
 mbtiles_file = None
-metadata_file = 'tiles/metadata.json'
-tiles_file = 'tiles/tiles.json'
+metadata_file = os.path.join(ROOT, 'tiles', 'metadata.json')
+tiles_file = os.path.join(ROOT, 'tiles', 'tiles.json')
 
 for arg in sys.argv:
     if arg.startswith('--base-url='):
@@ -61,4 +66,4 @@ tiles_json = {
 with open(tiles_file, 'w') as f:
     json.dump(tiles_json, f, indent=2)
 
-print(tiles_file + "has been created.")
+print(tiles_file + " has been created.")
