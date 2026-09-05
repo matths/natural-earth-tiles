@@ -1,5 +1,7 @@
 # build caches (regenerable)
 .vector-src/
 .raster-src/
+.font-src/
+.font-tools/
 node_modules/
 .DS_Store

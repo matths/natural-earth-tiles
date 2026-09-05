@@ -5,11 +5,12 @@
 #   make/vector.mk        vector tiles -> ./tiles/    (Natural Earth countries)
 #   make/raster.mk        raster tiles -> ./raster/   (Natural Earth II PNG)
 #   make/maplibre-gl.mk   maplibre-gl npm dist -> js/ + css/
+#   make/font.mk          Noto glyph pbfs -> ./font/  (MapLibre glyph source)
 #
 # Usage:
 #   make                        show this help (default goal)
-#   make vector|raster|maplibre-gl     build one module with its defaults
-#   make all                    build all three modules
+#   make vector|raster|maplibre-gl|font   build one module with its defaults
+#   make all                    build every module
 #   make check                  check the tools every module needs
 #   make <module>-clean|-prune|-check   module maintenance
 #   make help                   this message
@@ -18,6 +19,7 @@
 #   make vector METHOD=direct MAX_ZOOM=6 OUT_DIR=/tmp/tiles
 #   make raster RASTER_MAX_ZOOM=4
 #   make maplibre-gl            (honours the maplibre-gl version in package.json)
+#   make font FONT_DIR=/tmp/font
 #
 # A module is also runnable directly: make -f make/vector.mk
 # Full docs: README.md
@@ -29,32 +31,34 @@ ROOT  := $(abspath $(dir $(firstword $(MAKEFILE_LIST))))
 .DEFAULT_GOAL := help
 
 help:
-	@echo 'natural-earth-tiles - build three deployable modules'
+	@echo 'natural-earth-tiles - build deployable modules'
 	@echo ''
 	@echo 'Modules (each is make/<module>.mk):'
 	@echo '  vector        vector tiles  -> ./tiles/    (Natural Earth countries, MVT z0-8)'
 	@echo '  raster        raster tiles  -> ./raster/   (Natural Earth II shaded relief, PNG z0-6)'
 	@echo '  maplibre-gl   npm dist of maplibre-gl copied to js/ + css/'
+	@echo '  font          Noto glyph pbfs -> ./font/   (glyph source for text labels)'
 	@echo ''
 	@echo 'Usage:'
-	@echo '  make vector|raster|maplibre-gl    build one module (its defaults)'
-	@echo '  make all                          build vector + raster + maplibre-gl'
-	@echo '  make check                        check the tools every module needs'
-	@echo '  make <module>-clean|-prune|-check module maintenance'
-	@echo '    e.g. make vector-clean, make vector-prune, make raster-clean'
-	@echo '  make help                         this message'
+	@echo '  make vector|raster|maplibre-gl|font  build one module (its defaults)'
+	@echo '  make all                            build vector + raster + maplibre-gl + font'
+	@echo '  make check                          check the tools every module needs'
+	@echo '  make <module>-clean|-prune|-check   module maintenance'
+	@echo '    e.g. make vector-clean, make vector-prune, make raster-clean, make font-clean'
+	@echo '  make help                           this message'
 	@echo ''
 	@echo 'Pass module variables through, e.g.:'
 	@echo '  make vector METHOD=direct MAX_ZOOM=6 OUT_DIR=/tmp/tiles'
 	@echo '  make raster RASTER_MAX_ZOOM=4'
-	@echo '  make maplibre-gl                  (honours package.json maplibre-gl version)'
+	@echo '  make maplibre-gl                    (honours package.json maplibre-gl version)'
+	@echo '  make font FONT_DIR=/tmp/font'
 	@echo ''
 	@echo 'A module is also runnable directly: make -f make/vector.mk'
 
 # --- aggregates ------------------------------------------------------------
-all: vector raster maplibre-gl
+all: vector raster maplibre-gl font
 
-check: vector-check raster-check maplibre-gl-check
+check: vector-check raster-check maplibre-gl-check font-check
 
 # --- vector -----------------------------------------------------------------
 .PHONY: vector vector-clean vector-prune vector-check
@@ -74,3 +78,9 @@ raster-check:  ; $(MAKE) -C $(ROOT) -f make/raster.mk check
 maplibre-gl:       ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk
 maplibre-gl-clean: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk clean
 maplibre-gl-check: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk check
+
+# --- font -------------------------------------------------------------------
+.PHONY: font font-clean font-check
+font:        ; $(MAKE) -C $(ROOT) -f make/font.mk
+font-clean:  ; $(MAKE) -C $(ROOT) -f make/font.mk clean
+font-check:  ; $(MAKE) -C $(ROOT) -f make/font.mk check
