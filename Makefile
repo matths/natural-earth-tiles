@@ -4,11 +4,12 @@
 # own make process (so module variables and clean semantics never collide):
 #   make/vector.mk        vector tiles -> ./tiles/    (Natural Earth countries)
 #   make/raster.mk        raster tiles -> ./raster/   (Natural Earth II PNG)
+#   make/maplibre-gl.mk   maplibre-gl npm dist -> js/ + css/
 #
 # Usage:
 #   make                        show this help (default goal)
-#   make vector|raster          build one module with its defaults
-#   make all                    build vector + raster
+#   make vector|raster|maplibre-gl     build one module with its defaults
+#   make all                    build all three modules
 #   make check                  check the tools every module needs
 #   make <module>-clean|-prune|-check   module maintenance
 #   make help                   this message
@@ -16,6 +17,7 @@
 # Module variables pass through to the module makefile, e.g.
 #   make vector METHOD=direct MAX_ZOOM=6 OUT_DIR=/tmp/tiles
 #   make raster RASTER_MAX_ZOOM=4
+#   make maplibre-gl            (honours the maplibre-gl version in package.json)
 #
 # A module is also runnable directly: make -f make/vector.mk
 # Full docs: README.md
@@ -27,30 +29,32 @@ ROOT  := $(abspath $(dir $(firstword $(MAKEFILE_LIST))))
 .DEFAULT_GOAL := help
 
 help:
-	@echo 'natural-earth-tiles - build the vector and raster tile modules'
+	@echo 'natural-earth-tiles - build three deployable modules'
 	@echo ''
 	@echo 'Modules (each is make/<module>.mk):'
 	@echo '  vector        vector tiles  -> ./tiles/    (Natural Earth countries, MVT z0-8)'
 	@echo '  raster        raster tiles  -> ./raster/   (Natural Earth II shaded relief, PNG z0-6)'
+	@echo '  maplibre-gl   npm dist of maplibre-gl copied to js/ + css/'
 	@echo ''
 	@echo 'Usage:'
-	@echo '  make vector|raster            build one module (its defaults)'
-	@echo '  make all                      build vector + raster'
-	@echo '  make check                    check the tools every module needs'
+	@echo '  make vector|raster|maplibre-gl    build one module (its defaults)'
+	@echo '  make all                          build vector + raster + maplibre-gl'
+	@echo '  make check                        check the tools every module needs'
 	@echo '  make <module>-clean|-prune|-check module maintenance'
 	@echo '    e.g. make vector-clean, make vector-prune, make raster-clean'
-	@echo '  make help                     this message'
+	@echo '  make help                         this message'
 	@echo ''
 	@echo 'Pass module variables through, e.g.:'
 	@echo '  make vector METHOD=direct MAX_ZOOM=6 OUT_DIR=/tmp/tiles'
 	@echo '  make raster RASTER_MAX_ZOOM=4'
+	@echo '  make maplibre-gl                  (honours package.json maplibre-gl version)'
 	@echo ''
 	@echo 'A module is also runnable directly: make -f make/vector.mk'
 
 # --- aggregates ------------------------------------------------------------
-all: vector raster
+all: vector raster maplibre-gl
 
-check: vector-check raster-check
+check: vector-check raster-check maplibre-gl-check
 
 # --- vector -----------------------------------------------------------------
 .PHONY: vector vector-clean vector-prune vector-check
@@ -64,3 +68,9 @@ vector-check:  ; $(MAKE) -C $(ROOT) -f make/vector.mk check
 raster:        ; $(MAKE) -C $(ROOT) -f make/raster.mk
 raster-clean:  ; $(MAKE) -C $(ROOT) -f make/raster.mk clean
 raster-check:  ; $(MAKE) -C $(ROOT) -f make/raster.mk check
+
+# --- maplibre-gl ------------------------------------------------------------
+.PHONY: maplibre-gl maplibre-gl-clean maplibre-gl-check
+maplibre-gl:       ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk
+maplibre-gl-clean: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk clean
+maplibre-gl-check: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk check

@@ -1,25 +1,27 @@
 # natural-earth-tiles
 
-Builds self-hosted vector and raster map tilesets served from GitHub Pages:
+Builds the three deployable assets of a MapLibre map served from GitHub Pages:
 
-| module                        | command       | output                             | source                                        |
-| ----------------------------- | ------------- | ---------------------------------- | --------------------------------------------- |
-| **vector** (MVT tiles)        | `make vector` | `./tiles/` `{z}/{x}/{y}.pbf` z0-8  | Natural Earth 1:10m admin-0 countries         |
-| **raster** (PNG tiles)        | `make raster` | `./raster/` `{z}/{x}/{y}.png` z0-6 | Natural Earth II 1:10m LR shaded relief        |
+| module                          | command            | output                              | source                                        |
+| ------------------------------- | ------------------ | ----------------------------------- | --------------------------------------------- |
+| **vector** (MVT tiles)          | `make vector`      | `./tiles/` `{z}/{x}/{y}.pbf` z0-8   | Natural Earth 1:10m admin-0 countries         |
+| **raster** (PNG tiles)          | `make raster`      | `./raster/` `{z}/{x}/{y}.png` z0-6  | Natural Earth II 1:10m LR shaded relief        |
+| **maplibre-gl** (vendored JS)   | `make maplibre-gl` | `js/` + `css/`                      | the `maplibre-gl` npm package (see package.json) |
 
 The root [`Makefile`](./Makefile) is a small **dispatcher**; each module is its own
 self-contained makefile under [`make/`](./make/), run as its own make process so module
 variables and clean semantics never collide. Builds are incremental and cached under the
-gitignored `.vector-src/` / `.raster-src/`.
+gitignored `.vector-src/` / `.raster-src/` (`node_modules/` is gitignored too).
 
 ## Quick start
 
 ```sh
-make          # help (default goal)
-make vector   # vector tiles -> ./tiles/
-make raster   # raster tiles -> ./raster/
-make all      # vector + raster, in order
-make check    # check the tools every module needs
+make             # help (default goal)
+make vector      # vector tiles -> ./tiles/
+make raster      # raster tiles -> ./raster/
+make maplibre-gl # maplibre-gl dist -> js/ + css/
+make all         # all three, in order
+make check       # check the tools every module needs
 ```
 
 `make` with no target always prints help; pick a module from there. A module is also
@@ -39,9 +41,11 @@ make raster RASTER_MAX_ZOOM=4
 | help / check          | `make help` · `make check` |
 | vector build / clean / prune / check | `make vector` · `make vector-clean` · `make vector-prune` · `make vector-check` |
 | raster build / clean / check        | `make raster` · `make raster-clean` · `make raster-check` |
+| maplibre-gl build / clean / check   | `make maplibre-gl` · `make maplibre-gl-clean` · `make maplibre-gl-check` |
 
 `vector-prune` removes only the vector build cache (keeps `./tiles/`); `vector-clean`
 also removes the published `./tiles/`. `raster-clean` removes `./raster/` + its cache.
+`maplibre-gl-clean` removes `js/`, `css/` and `node_modules/`.
 
 ## Vector module
 
@@ -97,10 +101,23 @@ Use the output in `style.json` as a raster source:
 }
 ```
 
+## maplibre-gl module
+
+Installs the `maplibre-gl` npm package (the version pinned in `package.json`) and copies
+its ESM dist — `maplibre-gl.mjs` (+ source maps), `maplibre-gl-worker.mjs` and
+`maplibre-gl.css` — into `js/` and `css/` for static hosting.
+
+```sh
+make maplibre-gl
+```
+
+To bump MapLibre: `npm install maplibre-gl@latest --save-dev`, then
+`make maplibre-gl-clean && make maplibre-gl`. Requires `node`/`npm` (`make maplibre-gl-check`).
+
 ## Serving
 
-Commit the module outputs to the GitHub Pages branch: `./tiles/`, `./raster/` (caches
-`.vector-src/`, `.raster-src/` are gitignored).
+Commit the module outputs to the GitHub Pages branch: `./tiles/`, `./raster/`, `js/`,
+`css/` (caches `.vector-src/`, `.raster-src/`, `node_modules/` are gitignored).
 
 `tiles.json` defaults to the repo's GitHub Pages path
 (`https://matths.github.io/natural-earth-tiles/tiles/`). For local development, repoint
@@ -117,9 +134,12 @@ Makefile                  module dispatcher: help, all, <module>[-clean|-prune|-
 make/
   vector.mk               vector module (build + publish)
   raster.mk               raster module
+  maplibre-gl.mk          maplibre-gl module
 scripts/                  shared helpers (check-deps, vector extractors, raster-prep)
 .vector-src/              vector cache (gitignored)
 .raster-src/              raster cache (gitignored)
 tiles/                    vector tiles output (committed)
 raster/                   raster tiles output (committed)
+js/ css/                  maplibre-gl dist (committed)
+package.json              maplibre-gl npm dependency
 ```

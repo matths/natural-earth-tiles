@@ -1,0 +1,31 @@
+{
+  "name": "natural-earth-tiles",
+  "version": "1.0.0",
+  "description": "Create MapLibreGL compatible tiles from Natrual Earth data hosted using GitHub pages.",
+  "keywords": [
+    "map",
+    "vector",
+    "tiles",
+    "geography",
+    "countries"
+  ],
+  "homepage": "https://github.com/matths/natural-earth-tiles#readme",
+  "bugs": {
+    "url": "https://github.com/matths/natural-earth-tiles/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matths/natural-earth-tiles.git"
+  },
+  "license": "MIT",
+  "author": "Matthias Dittgen <dittgen@gmail.com>",
+  "type": "esm",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "make maplibre-gl"
+  },
+  "devDependencies": {
+    "maplibre-gl": "^6.7.0"
+  }
+}

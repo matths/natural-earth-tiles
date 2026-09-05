@@ -27,6 +27,9 @@ pkg() {
     sqlite3:brew)     echo sqlite ;;
     tippecanoe:*)     echo tippecanoe ;;  # the tippecanoe package ships tile-join too
     tile-join:*)      echo tippecanoe ;;
+    node:brew|npm:brew) echo node ;;  # Homebrew's node formula ships npm
+    node:apt)         echo nodejs ;;
+    npm:apt)          echo npm ;;
     *)                echo "$tool" ;;
   esac
 }
@@ -39,9 +42,10 @@ add_pkg() {
   esac
 }
 
-# tools each module/method needs (vector methods + raster)
+# tools each module/method needs (vector methods, raster, maplibre-gl)
 tools() {
   case "$1" in
+    maplibre-gl) echo node npm ;;
     raster)      echo curl unzip python3 gdalinfo gdal_translate gdal2tiles.py ;;
     direct)      echo curl unzip python3 rsync ogr2ogr ;;
     tile-join)   echo curl unzip python3 rsync ogr2ogr tippecanoe tile-join sqlite3 ;;
