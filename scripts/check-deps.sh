@@ -21,8 +21,8 @@ fi
 pkg() {
   local tool="$1" mgr="$2"
   case "$tool:$mgr" in
-    ogr2ogr:brew)     echo gdal ;;
-    ogr2ogr:apt)      echo gdal-bin ;;
+    ogr2ogr:brew|gdal_translate:brew|gdalinfo:brew|gdal2tiles.py:brew) echo gdal ;;
+    ogr2ogr:apt|gdal_translate:apt|gdalinfo:apt|gdal2tiles.py:apt)    echo gdal-bin ;;
     python3:brew)     echo python ;;   # Homebrew's python formula installs python3
     sqlite3:brew)     echo sqlite ;;
     tippecanoe:*)     echo tippecanoe ;;  # the tippecanoe package ships tile-join too
@@ -39,14 +39,14 @@ add_pkg() {
   esac
 }
 
-# tools the chosen method actually runs (base tools first, then method extras)
+# tools each module/method needs (vector methods + raster)
 tools() {
-  echo curl unzip python3 rsync   # every build needs these
   case "$1" in
-    direct)    echo ogr2ogr ;;
-    tile-join) echo ogr2ogr tippecanoe tile-join sqlite3 ;;
-    mb-util)   echo ogr2ogr tippecanoe sqlite3 git ;;  # git: to clone mbutil
-    ogr2ogr)   echo ogr2ogr tippecanoe sqlite3 ;;
+    raster)      echo curl unzip python3 gdalinfo gdal_translate gdal2tiles.py ;;
+    direct)      echo curl unzip python3 rsync ogr2ogr ;;
+    tile-join)   echo curl unzip python3 rsync ogr2ogr tippecanoe tile-join sqlite3 ;;
+    mb-util)     echo curl unzip python3 rsync ogr2ogr tippecanoe sqlite3 git ;;  # git: to clone mbutil
+    ogr2ogr)     echo curl unzip python3 rsync ogr2ogr tippecanoe sqlite3 ;;
   esac
 }
 

@@ -1,2 +1,4 @@
+# build caches (regenerable)
 .vector-src/
+.raster-src/
 .DS_Store

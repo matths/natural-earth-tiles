@@ -26,10 +26,9 @@ if [ -n "$sample" ] && command -v file >/dev/null 2>&1; then
 fi
 echo
 echo "Serve it:  the vector source in style.json reads $OUT/tiles.json."
-echo "  tiles.json BASE_URL defaults to this repo's GitHub Pages path."
-echo "  Change it without rebuilding (publish re-writes tiles.json):"
-echo "    make BASE_URL=http://127.0.0.1:8080/tiles/   # local dev"
+echo "  Change BASE_URL (no rebuild - publish re-writes tiles.json):"
+echo "    make vector BASE_URL=http://127.0.0.1:8080/tiles/   # local dev"
 echo
-echo "  Clean up:"
-echo "    make prune   remove only the .vector-src/ build cache"
-echo "    make clean   also remove $(basename "$OUT") (build cache + dist)"
+echo "  Clean up (from the repo root):"
+echo "    make vector-prune   remove only the .vector-src/ build cache"
+echo "    make vector-clean   also remove $(basename "$OUT") (build cache + dist)"

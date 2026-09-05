@@ -1,113 +1,125 @@
 # natural-earth-tiles
 
-Builds a self-hosted **vector tile pyramid** (Mapbox Vector Tiles, `.pbf`) from the
-[Natural Earth](https://www.naturalearthdata.com/) 1:10m admin-0 countries dataset —
-the `countries` source layer behind a MapLibre `style.json`, served from `./tiles/`.
+Builds self-hosted vector and raster map tilesets served from GitHub Pages:
 
-The build is driven by a [`Makefile`](./Makefile); helpers live in [`scripts/`](./scripts/).
-Everything is incremental: the heavy steps (download, unzip, shp→GeoJSON,
-tippecanoe→`.mbtiles`, tile extraction) only re-run when their inputs change, cached
-under the gitignored `.vector-src/`.
+| module                        | command       | output                             | source                                        |
+| ----------------------------- | ------------- | ---------------------------------- | --------------------------------------------- |
+| **vector** (MVT tiles)        | `make vector` | `./tiles/` `{z}/{x}/{y}.pbf` z0-8  | Natural Earth 1:10m admin-0 countries         |
+| **raster** (PNG tiles)        | `make raster` | `./raster/` `{z}/{x}/{y}.png` z0-6 | Natural Earth II 1:10m LR shaded relief        |
 
-## Prerequisites
-
-`make`, `bash`, plus `curl unzip python3 rsync`. Then, per pipeline method:
-`ogr2ogr` (GDAL) and `tippecanoe` (which also ships `tile-join`); `sqlite3`; the
-`mb-util` method additionally clones [`mapbox/mbutil`](https://github.com/mapbox/mbutil).
-
-Check what's missing for the default method and get the exact install command:
-
-```sh
-make check
-```
-
-Installers are auto-detected: **Homebrew on macOS**, **`apt-get` on Debian/Ubuntu**
-(including **WSL**). `make check` prints, e.g.:
-
-```sh
-# macOS
-brew install gdal tippecanoe
-# Debian / Ubuntu / WSL
-sudo apt-get update && sudo apt-get install -y gdal-bin tippecanoe
-```
+The root [`Makefile`](./Makefile) is a small **dispatcher**; each module is its own
+self-contained makefile under [`make/`](./make/), run as its own make process so module
+variables and clean semantics never collide. Builds are incremental and cached under the
+gitignored `.vector-src/` / `.raster-src/`.
 
 ## Quick start
 
 ```sh
-make                 # tile-join pipeline, zoom 0–8, publishes to ./tiles/
-make method=direct   # ogr2ogr shp -> MVT directly (no tippecanoe)
-make method=mb-util  # extract with mbutil (gzip blobs auto-decompressed)
-make method=ogr2ogr  # ogr2ogr -f MVT from the .mbtiles
-make maxzoom=6       # lower top zoom
+make          # help (default goal)
+make vector   # vector tiles -> ./tiles/
+make raster   # raster tiles -> ./raster/
+make all      # vector + raster, in order
+make check    # check the tools every module needs
 ```
 
-Defaults are `method=tile-join`, `maxzoom=8`, published to `./tiles/`. Run `make help`
-for the full list.
+`make` with no target always prints help; pick a module from there. A module is also
+runnable directly, e.g. `make -f make/vector.mk`.
 
-## Methods
+Module variables pass straight through the dispatcher to the module makefile, e.g.:
 
-| method      | pipeline                                              | writes       |
-| ----------- | ----------------------------------------------------- | ------------ |
-| `direct`    | `shp` → MVT via `ogr2ogr -f MVT` (no tippecanoe)      | raw MVT      |
-| `tile-join` | `shp` → GeoJSON → `.mbtiles` → `tile-join`            | raw MVT      |
-| `ogr2ogr`   | `shp` → GeoJSON → `.mbtiles` → `ogr2ogr -f MVT`       | raw MVT      |
-| `mb-util`   | `shp` → GeoJSON → `.mbtiles` → `mbutil` → decompress  | raw MVT\*    |
-
-\* mbutil copies gzip blobs out verbatim, so that method needs (and runs) an extra
-decompress step; the others write raw MVT directly. Raw (uncompressed) MVT is required
-because static hosts like GitHub Pages serve `.pbf` **without** `Content-Encoding: gzip`.
-
-`direct`/`ogr2ogr` tiles keep full-precision geometry (no per-zoom simplification) and are
-much larger than the tippecanoe methods — best for comparison or low maxzooms. The three
-`.mbtiles` methods share the same GeoJSON + `.mbtiles` build cache.
-
-## Options
-
-Passed as `make VAR=value` (or as environment variables):
-
-| variable    | default                              | meaning                             |
-| ----------- | ------------------------------------ | ----------------------------------- |
-| `method`    | `tile-join`                          | `direct` \| `tile-join` \| `mb-util` \| `ogr2ogr` |
-| `maxzoom`   | `8`                                  | top zoom of the pyramid             |
-| `OUT_DIR`   | `<repo>/tiles`                       | where finished tiles are published  |
-| `BASE_URL`  | `https://matths.github.io/natural-earth-tiles/tiles/` | prefix written into `tiles.json` |
-
-Each method+zoom combination extracts into its own dir under `.vector-src/`
-(`tiles-<method>-z<zoom>/`), so switching methods or zooms never serves stale tiles; the
-`publish` step syncs the current one into `OUT_DIR`.
+```sh
+make vector METHOD=direct MAX_ZOOM=6 OUT_DIR=/tmp/tiles
+make raster RASTER_MAX_ZOOM=4
+```
 
 ## Maintenance
 
+| action                | command                |
+| --------------------- | ---------------------- |
+| help / check          | `make help` · `make check` |
+| vector build / clean / prune / check | `make vector` · `make vector-clean` · `make vector-prune` · `make vector-check` |
+| raster build / clean / check        | `make raster` · `make raster-clean` · `make raster-check` |
+
+`vector-prune` removes only the vector build cache (keeps `./tiles/`); `vector-clean`
+also removes the published `./tiles/`. `raster-clean` removes `./raster/` + its cache.
+
+## Vector module
+
+Self-hosted vector tiles (`{z}/{x}/{y}.pbf`, Mapbox Vector Tiles, Web Mercator) from
+Natural Earth countries — the `countries` source layer behind `style.json`.
+
 ```sh
-make help    # list targets and current settings
-make check   # verify installed tools for the chosen method
-make prune   # remove only the .vector-src/ build cache (keeps ./tiles/)
-make clean   # remove the .vector-src/ build cache AND the published OUT_DIR
+make vector                          # tile-join, z0-8 -> ./tiles/
+make vector METHOD=direct            # ogr2ogr shp -> MVT directly (no tippecanoe)
+make vector METHOD=mb-util           # extract with mbutil (gzip blobs auto-decompressed)
+make vector METHOD=ogr2ogr           # ogr2ogr -f MVT from the .mbtiles
+make vector MAX_ZOOM=6               # lower top zoom
 ```
 
-To force a fresh source download, delete `.vector-src/` first.
+| variable   | default                                  | meaning                          |
+| ---------- | ---------------------------------------- | -------------------------------- |
+| `METHOD`   | `tile-join`                              | `direct` \| `tile-join` \| `mb-util` \| `ogr2ogr` |
+| `MAX_ZOOM` | `8`                                      | top zoom of the pyramid          |
+| `OUT_DIR`  | `<repo>/tiles`                           | where tiles are published        |
+| `BASE_URL` | `https://matths.github.io/natural-earth-tiles/tiles/` | prefix written into `tiles.json` |
 
-## Layout
+All methods write **raw (uncompressed) MVT**, which static hosts like GitHub Pages need
+because they serve `.pbf` without `Content-Encoding: gzip`. `direct`/`ogr2ogr` keep
+full-precision geometry and are much larger than the tippecanoe methods — best for
+comparison or low maxzooms. Each method+zoom builds its own dir under `.vector-src/`
+(`tiles-<method>-z<zoom>/`), so switching methods or zooms never serves stale tiles.
 
+## Raster module
+
+Self-hosted raster tiles (`{z}/{x}/{y}.png`, Web Mercator, 256px) from the Natural
+Earth II 1:10m **LR** raster (shaded relief + water + drainages) — the look of
+OpenFreeMap's `ne2_shaded`.
+
+```sh
+make raster               # z0-6 -> ./raster/
+make raster RASTER_MAX_ZOOM=4
 ```
-Makefile                      target graph + publish/clean (entry point)
-scripts/
-  check-deps.sh               platform-aware tool check (brew / apt-get)
-  extract-mb-util.sh          mbutil clone + extract + gzip-decompress
-  summary.sh                  post-publish summary + hints
-  create_tiles_json.py        writes tiles.json from metadata (+ .mbtiles)
-.vector-src/                  downloads + intermediates (gitignored, throwaway)
-tiles/                        {z}/{x}/{y}.pbf + metadata.json + tiles.json (dist)
+
+| variable          | default            | meaning                       |
+| ----------------- | ------------------ | ----------------------------- |
+| `RASTER_MAX_ZOOM` | `6`                | top zoom (LR is native to ~z6) |
+| `RASTER_OUT`      | `<repo>/raster`    | where PNG tiles are written    |
+
+Requires GDAL (`gdal2tiles.py`, `gdalinfo`, `gdal_translate`) — see `make raster-check`.
+Use the output in `style.json` as a raster source:
+
+```json
+"ne2_shaded": {
+  "type": "raster",
+  "tiles": ["raster/{z}/{x}/{y}.png"],
+  "tileSize": 256,
+  "maxzoom": 6
+}
 ```
 
 ## Serving
 
-`tiles.json` defaults to this repo's GitHub Pages path
-(`https://matths.github.io/natural-earth-tiles/tiles/`). For local development,
-repoint it without rebuilding tiles (publish re-writes `tiles.json` every run):
+Commit the module outputs to the GitHub Pages branch: `./tiles/`, `./raster/` (caches
+`.vector-src/`, `.raster-src/` are gitignored).
+
+`tiles.json` defaults to the repo's GitHub Pages path
+(`https://matths.github.io/natural-earth-tiles/tiles/`). For local development, repoint
+it without rebuilding (publish re-writes `tiles.json` every run):
 
 ```sh
-make BASE_URL=http://127.0.0.1:8080/tiles/   # local dev server
+make vector BASE_URL=http://127.0.0.1:8080/tiles/   # local dev server
 ```
 
-`make clean` and then commit the regenerated `./tiles/`.
+## Layout
+
+```
+Makefile                  module dispatcher: help, all, <module>[-clean|-prune|-check]
+make/
+  vector.mk               vector module (build + publish)
+  raster.mk               raster module
+scripts/                  shared helpers (check-deps, vector extractors, raster-prep)
+.vector-src/              vector cache (gitignored)
+.raster-src/              raster cache (gitignored)
+tiles/                    vector tiles output (committed)
+raster/                   raster tiles output (committed)
+```
