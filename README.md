@@ -8,6 +8,7 @@ Builds the deployable assets of a MapLibre map served from GitHub Pages:
 | **raster** (PNG tiles)          | `make raster`      | `./raster/` `{z}/{x}/{y}.png` z0-6  | Natural Earth II 1:10m LR shaded relief        |
 | **maplibre-gl** (vendored JS)   | `make maplibre-gl` | `js/` + `css/`                      | the `maplibre-gl` npm package (see package.json) |
 | **font** (glyph PBFs)           | `make font`        | `./font/` `<stack>/<range>.pbf`     | Google Noto Sans (via fontnik)                |
+| **country-sizes** (label sizes) | `make country-sizes` | `./country-sizes.json`           | vector module's `countries.geojson`           |
 
 The root [`Makefile`](./Makefile) is a small **dispatcher**; each module is its own
 self-contained makefile under [`make/`](./make/), run as its own make process so module
@@ -22,6 +23,7 @@ make vector      # vector tiles -> ./tiles/
 make raster      # raster tiles -> ./raster/
 make maplibre-gl # maplibre-gl dist -> js/ + css/
 make font        # Noto glyphs -> ./font/
+make country-sizes # country label sizes -> ./country-sizes.json
 make all         # all modules, in order
 make check       # check the tools every module needs
 ```
@@ -45,11 +47,13 @@ make raster RASTER_MAX_ZOOM=4
 | raster build / clean / check        | `make raster` · `make raster-clean` · `make raster-check` |
 | maplibre-gl build / clean / check   | `make maplibre-gl` · `make maplibre-gl-clean` · `make maplibre-gl-check` |
 | font build / clean / check          | `make font` · `make font-clean` · `make font-check` |
+| country-sizes build / clean / check | `make country-sizes` · `make country-sizes-clean` · `make country-sizes-check` |
 
 `vector-prune` removes only the vector build cache (keeps `./tiles/`); `vector-clean`
 also removes the published `./tiles/`. `raster-clean` removes `./raster/` + its cache.
 `maplibre-gl-clean` removes `js/`, `css/` and `node_modules/`. `font-clean` removes
 `./font/` plus the `.font-src/`/`.font-tools/` caches.
+`country-sizes-clean` removes `./country-sizes.json`.
 
 ## Vector module
 
@@ -136,11 +140,27 @@ Important: point `text-font` at a **single** built font (e.g. `["Noto Sans Regul
 Static hosts serve one glyph request per stack and cannot merge glyphs across the
 separate `./font/<font>/` folders, so a multi-font stack 404s.
 
+## country-sizes module
+
+Writes `./country-sizes.json`: for every country (`ADM0_A3`) a `size` text-size
+multiplier derived from the bbox diagonal of the country's **main** landmass (engine:
+`scripts/create_country_sizes.mjs`). `main.js`/`style.json` read it to scale country
+label sizes.
+
+```sh
+make country-sizes            # from the vector geojson -> ./country-sizes.json
+make country-sizes-clean      # remove ./country-sizes.json
+```
+
+Input is the vector module's `countries.geojson` (`.vector-src/`); this module runs
+only `make vector`'s `geojson` step, so no tiles are built. Requires `node`
+(`make country-sizes-check`).
+
 ## Serving
 
 Commit the module outputs to the GitHub Pages branch: `./tiles/`, `./raster/`, `js/`,
-`css/`, `./font/` (caches `.vector-src/`, `.raster-src/`, `.font-src/`, `.font-tools/`,
-`node_modules/` are gitignored).
+`css/`, `./font/`, `./country-sizes.json` (caches `.vector-src/`, `.raster-src/`,
+`.font-src/`, `.font-tools/`, `node_modules/` are gitignored).
 
 `tiles.json` defaults to the repo's GitHub Pages path
 (`https://matths.github.io/natural-earth-tiles/tiles/`). For local development, repoint
@@ -159,7 +179,8 @@ make/
   raster.mk               raster module
   maplibre-gl.mk          maplibre-gl module
   font.mk                 Noto glyph module
-scripts/                  shared helpers (check-deps, raster-prep, font-build, ...)
+  country-sizes.mk        country label-size module
+scripts/                  shared helpers (check-deps, raster-prep, font-build, create_country_sizes.mjs, ...)
 .vector-src/              vector cache (gitignored)
 .raster-src/              raster cache (gitignored)
 .font-src/ .font-tools/   font caches (gitignored)
@@ -167,5 +188,6 @@ tiles/                    vector tiles output (committed)
 raster/                   raster tiles output (committed)
 js/ css/                  maplibre-gl dist (committed)
 font/                     Noto glyph pbfs (committed)
+country-sizes.json        country label sizes (committed)
 package.json              maplibre-gl npm dependency
 ```

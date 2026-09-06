@@ -89,6 +89,11 @@ $(GEOJSON): $(SHP)
 	@echo ">> ogr2ogr shp -> GeoJSON"
 	@ogr2ogr -f GeoJSON $@ $(SHP)
 
+# Public: build only the source GeoJSON (used by the country-sizes module,
+# which does not need the tiles).
+.PHONY: geojson
+geojson: $(GEOJSON)
+
 # ---------------------------------------------------------------------------
 # 3. tippecanoe -> .mbtiles
 # ---------------------------------------------------------------------------

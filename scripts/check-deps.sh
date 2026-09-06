@@ -42,12 +42,13 @@ add_pkg() {
   esac
 }
 
-# tools each module/method needs (vector methods, raster, maplibre-gl, font)
+# tools each module/method needs (vector methods, raster, maplibre-gl, font, country-sizes)
 tools() {
   case "$1" in
-    font)        echo curl node npm ;;
-    maplibre-gl) echo node npm ;;
-    raster)      echo curl unzip python3 gdalinfo gdal_translate gdal2tiles.py ;;
+    country-sizes) echo node ;;
+    font)          echo curl node npm ;;
+    maplibre-gl)   echo node npm ;;
+    raster)        echo curl unzip python3 gdalinfo gdal_translate gdal2tiles.py ;;
     direct)      echo curl unzip python3 rsync ogr2ogr ;;
     tile-join)   echo curl unzip python3 rsync ogr2ogr tippecanoe tile-join sqlite3 ;;
     mb-util)     echo curl unzip python3 rsync ogr2ogr tippecanoe sqlite3 git ;;  # git: to clone mbutil

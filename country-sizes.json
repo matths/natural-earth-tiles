@@ -1,0 +1,1292 @@
+{
+  "IDN": {
+    "name": "Indonesia",
+    "diag": 13.3,
+    "size": 0.875
+  },
+  "MYS": {
+    "name": "Malaysia",
+    "diag": 11.54,
+    "size": 0.846
+  },
+  "CHL": {
+    "name": "Chile",
+    "diag": 37.4,
+    "size": 1.175
+  },
+  "BOL": {
+    "name": "Bolivia",
+    "diag": 17.99,
+    "size": 0.952
+  },
+  "PER": {
+    "name": "Peru",
+    "diag": 22.26,
+    "size": 1.02
+  },
+  "ARG": {
+    "name": "Argentina",
+    "diag": 36.51,
+    "size": 1.168
+  },
+  "ESB": {
+    "name": "Dhekelia",
+    "diag": 0.31,
+    "size": 0.428
+  },
+  "CYP": {
+    "name": "Cyprus",
+    "diag": 1.54,
+    "size": 0.542
+  },
+  "IND": {
+    "name": "India",
+    "diag": 40.07,
+    "size": 1.195
+  },
+  "CHN": {
+    "name": "China",
+    "diag": 69.66,
+    "size": 1.388
+  },
+  "ISR": {
+    "name": "Israel",
+    "diag": 4.25,
+    "size": 0.642
+  },
+  "PSX": {
+    "name": "Palestine",
+    "diag": 1.39,
+    "size": 0.536
+  },
+  "LBN": {
+    "name": "Lebanon",
+    "diag": 2.22,
+    "size": 0.569
+  },
+  "ETH": {
+    "name": "Ethiopia",
+    "diag": 18.88,
+    "size": 0.966
+  },
+  "SDS": {
+    "name": "S. Sudan",
+    "diag": 14.68,
+    "size": 0.898
+  },
+  "SOM": {
+    "name": "Somalia",
+    "diag": 17.22,
+    "size": 0.94
+  },
+  "KEN": {
+    "name": "Kenya",
+    "diag": 12.58,
+    "size": 0.863
+  },
+  "MWI": {
+    "name": "Malawi",
+    "diag": 8.4,
+    "size": 0.772
+  },
+  "TZA": {
+    "name": "Tanzania",
+    "diag": 15.47,
+    "size": 0.911
+  },
+  "SYR": {
+    "name": "Syria",
+    "diag": 8.33,
+    "size": 0.77
+  },
+  "SOL": {
+    "name": "Somaliland",
+    "diag": 7.2,
+    "size": 0.736
+  },
+  "FRA": {
+    "name": "France",
+    "diag": 15.66,
+    "size": 0.914
+  },
+  "SUR": {
+    "name": "Suriname",
+    "diag": 5.84,
+    "size": 0.695
+  },
+  "GUY": {
+    "name": "Guyana",
+    "diag": 8.86,
+    "size": 0.786
+  },
+  "KOR": {
+    "name": "South Korea",
+    "diag": 5.54,
+    "size": 0.685
+  },
+  "PRK": {
+    "name": "North Korea",
+    "diag": 8.32,
+    "size": 0.769
+  },
+  "MAR": {
+    "name": "Morocco",
+    "diag": 21.58,
+    "size": 1.009
+  },
+  "SAH": {
+    "name": "W. Sahara",
+    "diag": 10.89,
+    "size": 0.835
+  },
+  "CRI": {
+    "name": "Costa Rica",
+    "diag": 4.64,
+    "size": 0.655
+  },
+  "NIC": {
+    "name": "Nicaragua",
+    "diag": 6.28,
+    "size": 0.708
+  },
+  "COG": {
+    "name": "Congo",
+    "diag": 11.53,
+    "size": 0.845
+  },
+  "COD": {
+    "name": "Dem. Rep. Congo",
+    "diag": 26.8,
+    "size": 1.087
+  },
+  "BTN": {
+    "name": "Bhutan",
+    "diag": 3.75,
+    "size": 0.625
+  },
+  "UKR": {
+    "name": "Ukraine",
+    "diag": 19.39,
+    "size": 0.974
+  },
+  "BLR": {
+    "name": "Belarus",
+    "diag": 10.75,
+    "size": 0.832
+  },
+  "NAM": {
+    "name": "Namibia",
+    "diag": 18.1,
+    "size": 0.954
+  },
+  "ZAF": {
+    "name": "South Africa",
+    "diag": 20.76,
+    "size": 0.996
+  },
+  "MAF": {
+    "name": "St-Martin",
+    "diag": 0.16,
+    "size": 0.367
+  },
+  "SXM": {
+    "name": "Sint Maarten",
+    "diag": 0.11,
+    "size": 0.336
+  },
+  "OMN": {
+    "name": "Oman",
+    "diag": 11.46,
+    "size": 0.844
+  },
+  "UZB": {
+    "name": "Uzbekistan",
+    "diag": 19.11,
+    "size": 0.97
+  },
+  "KAZ": {
+    "name": "Kazakhstan",
+    "diag": 43.46,
+    "size": 1.219
+  },
+  "TJK": {
+    "name": "Tajikistan",
+    "diag": 8.96,
+    "size": 0.789
+  },
+  "LTU": {
+    "name": "Lithuania",
+    "diag": 6.3,
+    "size": 0.709
+  },
+  "BRA": {
+    "name": "Brazil",
+    "diag": 55.32,
+    "size": 1.302
+  },
+  "URY": {
+    "name": "Uruguay",
+    "diag": 7.22,
+    "size": 0.737
+  },
+  "MNG": {
+    "name": "Mongolia",
+    "diag": 33.85,
+    "size": 1.145
+  },
+  "RUS": {
+    "name": "Russia",
+    "diag": 156.98,
+    "size": 1.614
+  },
+  "CZE": {
+    "name": "Czechia",
+    "diag": 7.2,
+    "size": 0.736
+  },
+  "DEU": {
+    "name": "Germany",
+    "diag": 11.93,
+    "size": 0.852
+  },
+  "EST": {
+    "name": "Estonia",
+    "diag": 5.24,
+    "size": 0.675
+  },
+  "LVA": {
+    "name": "Latvia",
+    "diag": 7.64,
+    "size": 0.749
+  },
+  "NOR": {
+    "name": "Norway",
+    "diag": 29.26,
+    "size": 1.107
+  },
+  "SWE": {
+    "name": "Sweden",
+    "diag": 18.92,
+    "size": 0.967
+  },
+  "FIN": {
+    "name": "Finland",
+    "diag": 15.01,
+    "size": 0.903
+  },
+  "VNM": {
+    "name": "Vietnam",
+    "diag": 16.53,
+    "size": 0.928
+  },
+  "KHM": {
+    "name": "Cambodia",
+    "diag": 6.82,
+    "size": 0.724
+  },
+  "LUX": {
+    "name": "Luxembourg",
+    "diag": 1.08,
+    "size": 0.523
+  },
+  "ARE": {
+    "name": "United Arab Emirates",
+    "diag": 5.93,
+    "size": 0.698
+  },
+  "BEL": {
+    "name": "Belgium",
+    "diag": 4.34,
+    "size": 0.645
+  },
+  "GEO": {
+    "name": "Georgia",
+    "diag": 7.17,
+    "size": 0.735
+  },
+  "MKD": {
+    "name": "North Macedonia",
+    "diag": 2.98,
+    "size": 0.599
+  },
+  "ALB": {
+    "name": "Albania",
+    "diag": 3.5,
+    "size": 0.617
+  },
+  "AZE": {
+    "name": "Azerbaijan",
+    "diag": 6.42,
+    "size": 0.713
+  },
+  "KOS": {
+    "name": "Kosovo",
+    "diag": 2.25,
+    "size": 0.57
+  },
+  "TUR": {
+    "name": "Turkey",
+    "diag": 19.76,
+    "size": 0.98
+  },
+  "ESP": {
+    "name": "Spain",
+    "diag": 14.82,
+    "size": 0.9
+  },
+  "LAO": {
+    "name": "Laos",
+    "diag": 11.44,
+    "size": 0.844
+  },
+  "KGZ": {
+    "name": "Kyrgyzstan",
+    "diag": 11.76,
+    "size": 0.849
+  },
+  "ARM": {
+    "name": "Armenia",
+    "diag": 3.99,
+    "size": 0.633
+  },
+  "DNK": {
+    "name": "Denmark",
+    "diag": 4.12,
+    "size": 0.637
+  },
+  "LBY": {
+    "name": "Libya",
+    "diag": 20.96,
+    "size": 0.999
+  },
+  "TUN": {
+    "name": "Tunisia",
+    "diag": 8.21,
+    "size": 0.766
+  },
+  "ROU": {
+    "name": "Romania",
+    "diag": 10.53,
+    "size": 0.829
+  },
+  "HUN": {
+    "name": "Hungary",
+    "diag": 7.35,
+    "size": 0.74
+  },
+  "SVK": {
+    "name": "Slovakia",
+    "diag": 5.99,
+    "size": 0.7
+  },
+  "POL": {
+    "name": "Poland",
+    "diag": 11.6,
+    "size": 0.847
+  },
+  "IRL": {
+    "name": "Ireland",
+    "diag": 5.97,
+    "size": 0.699
+  },
+  "GBR": {
+    "name": "United Kingdom",
+    "diag": 11.84,
+    "size": 0.851
+  },
+  "GRC": {
+    "name": "Greece",
+    "diag": 8.53,
+    "size": 0.776
+  },
+  "ZMB": {
+    "name": "Zambia",
+    "diag": 15.31,
+    "size": 0.908
+  },
+  "SLE": {
+    "name": "Sierra Leone",
+    "diag": 4.31,
+    "size": 0.644
+  },
+  "GIN": {
+    "name": "Guinea",
+    "diag": 9.23,
+    "size": 0.797
+  },
+  "LBR": {
+    "name": "Liberia",
+    "diag": 5.88,
+    "size": 0.696
+  },
+  "CAF": {
+    "name": "Central African Rep.",
+    "diag": 15.72,
+    "size": 0.915
+  },
+  "SDN": {
+    "name": "Sudan",
+    "diag": 21.58,
+    "size": 1.009
+  },
+  "DJI": {
+    "name": "Djibouti",
+    "diag": 2.44,
+    "size": 0.578
+  },
+  "ERI": {
+    "name": "Eritrea",
+    "diag": 8.76,
+    "size": 0.783
+  },
+  "AUT": {
+    "name": "Austria",
+    "diag": 8.07,
+    "size": 0.762
+  },
+  "IRQ": {
+    "name": "Iraq",
+    "diag": 12.84,
+    "size": 0.867
+  },
+  "ITA": {
+    "name": "Italy",
+    "diag": 15.03,
+    "size": 0.904
+  },
+  "CHE": {
+    "name": "Switzerland",
+    "diag": 4.93,
+    "size": 0.664
+  },
+  "IRN": {
+    "name": "Iran",
+    "diag": 24.27,
+    "size": 1.052
+  },
+  "NLD": {
+    "name": "Netherlands",
+    "diag": 4.63,
+    "size": 0.654
+  },
+  "LIE": {
+    "name": "Liechtenstein",
+    "diag": 0.25,
+    "size": 0.42
+  },
+  "CIV": {
+    "name": "Côte d'Ivoire",
+    "diag": 8.84,
+    "size": 0.785
+  },
+  "SRB": {
+    "name": "Serbia",
+    "diag": 5.71,
+    "size": 0.69
+  },
+  "MLI": {
+    "name": "Mali",
+    "diag": 22.2,
+    "size": 1.019
+  },
+  "SEN": {
+    "name": "Senegal",
+    "diag": 7.56,
+    "size": 0.747
+  },
+  "NGA": {
+    "name": "Nigeria",
+    "diag": 15.37,
+    "size": 0.91
+  },
+  "BEN": {
+    "name": "Benin",
+    "diag": 6.91,
+    "size": 0.727
+  },
+  "AGO": {
+    "name": "Angola",
+    "diag": 17.34,
+    "size": 0.941
+  },
+  "HRV": {
+    "name": "Croatia",
+    "diag": 6.92,
+    "size": 0.728
+  },
+  "SVN": {
+    "name": "Slovenia",
+    "diag": 3.46,
+    "size": 0.615
+  },
+  "QAT": {
+    "name": "Qatar",
+    "diag": 1.82,
+    "size": 0.553
+  },
+  "SAU": {
+    "name": "Saudi Arabia",
+    "diag": 26.3,
+    "size": 1.083
+  },
+  "BWA": {
+    "name": "Botswana",
+    "diag": 13.07,
+    "size": 0.871
+  },
+  "ZWE": {
+    "name": "Zimbabwe",
+    "diag": 10.35,
+    "size": 0.826
+  },
+  "PAK": {
+    "name": "Pakistan",
+    "diag": 21,
+    "size": 1
+  },
+  "BGR": {
+    "name": "Bulgaria",
+    "diag": 6.94,
+    "size": 0.728
+  },
+  "THA": {
+    "name": "Thailand",
+    "diag": 16.98,
+    "size": 0.936
+  },
+  "SMR": {
+    "name": "San Marino",
+    "diag": 0.14,
+    "size": 0.354
+  },
+  "HTI": {
+    "name": "Haiti",
+    "diag": 3.44,
+    "size": 0.615
+  },
+  "DOM": {
+    "name": "Dominican Rep.",
+    "diag": 4.36,
+    "size": 0.645
+  },
+  "TCD": {
+    "name": "Chad",
+    "diag": 19.15,
+    "size": 0.97
+  },
+  "KWT": {
+    "name": "Kuwait",
+    "diag": 2.46,
+    "size": 0.578
+  },
+  "SLV": {
+    "name": "El Salvador",
+    "diag": 2.73,
+    "size": 0.589
+  },
+  "GTM": {
+    "name": "Guatemala",
+    "diag": 5.73,
+    "size": 0.691
+  },
+  "TLS": {
+    "name": "Timor-Leste",
+    "diag": 2.68,
+    "size": 0.587
+  },
+  "BRN": {
+    "name": "Brunei",
+    "diag": 1.52,
+    "size": 0.541
+  },
+  "MCO": {
+    "name": "Monaco",
+    "diag": 0.08,
+    "size": 0.321
+  },
+  "DZA": {
+    "name": "Algeria",
+    "diag": 27.47,
+    "size": 1.092
+  },
+  "MOZ": {
+    "name": "Mozambique",
+    "diag": 19.54,
+    "size": 0.977
+  },
+  "SWZ": {
+    "name": "eSwatini",
+    "diag": 2.07,
+    "size": 0.563
+  },
+  "BDI": {
+    "name": "Burundi",
+    "diag": 2.84,
+    "size": 0.594
+  },
+  "RWA": {
+    "name": "Rwanda",
+    "diag": 2.69,
+    "size": 0.588
+  },
+  "MMR": {
+    "name": "Myanmar",
+    "diag": 20.62,
+    "size": 0.994
+  },
+  "BGD": {
+    "name": "Bangladesh",
+    "diag": 7.48,
+    "size": 0.744
+  },
+  "AND": {
+    "name": "Andorra",
+    "diag": 0.42,
+    "size": 0.443
+  },
+  "AFG": {
+    "name": "Afghanistan",
+    "diag": 17.03,
+    "size": 0.937
+  },
+  "MNE": {
+    "name": "Montenegro",
+    "diag": 2.56,
+    "size": 0.583
+  },
+  "BIH": {
+    "name": "Bosnia and Herz.",
+    "diag": 4.76,
+    "size": 0.659
+  },
+  "UGA": {
+    "name": "Uganda",
+    "diag": 7.89,
+    "size": 0.757
+  },
+  "USG": {
+    "name": "USNB Guantanamo Bay",
+    "diag": 0.11,
+    "size": 0.334
+  },
+  "CUB": {
+    "name": "Cuba",
+    "diag": 11.33,
+    "size": 0.842
+  },
+  "HND": {
+    "name": "Honduras",
+    "diag": 6.94,
+    "size": 0.728
+  },
+  "ECU": {
+    "name": "Ecuador",
+    "diag": 8.66,
+    "size": 0.78
+  },
+  "COL": {
+    "name": "Colombia",
+    "diag": 20.65,
+    "size": 0.994
+  },
+  "PRY": {
+    "name": "Paraguay",
+    "diag": 11.81,
+    "size": 0.85
+  },
+  "BRI": {
+    "name": "Brazilian I.",
+    "diag": 0.04,
+    "size": 0.3
+  },
+  "PRT": {
+    "name": "Portugal",
+    "diag": 6.13,
+    "size": 0.704
+  },
+  "MDA": {
+    "name": "Moldova",
+    "diag": 4.64,
+    "size": 0.655
+  },
+  "TKM": {
+    "name": "Turkmenistan",
+    "diag": 16.14,
+    "size": 0.922
+  },
+  "JOR": {
+    "name": "Jordan",
+    "diag": 6.03,
+    "size": 0.701
+  },
+  "NPL": {
+    "name": "Nepal",
+    "diag": 9.1,
+    "size": 0.793
+  },
+  "LSO": {
+    "name": "Lesotho",
+    "diag": 3.21,
+    "size": 0.607
+  },
+  "CMR": {
+    "name": "Cameroon",
+    "diag": 13.78,
+    "size": 0.883
+  },
+  "GAB": {
+    "name": "Gabon",
+    "diag": 8.54,
+    "size": 0.776
+  },
+  "NER": {
+    "name": "Niger",
+    "diag": 19.75,
+    "size": 0.98
+  },
+  "BFA": {
+    "name": "Burkina Faso",
+    "diag": 9.75,
+    "size": 0.812
+  },
+  "TGO": {
+    "name": "Togo",
+    "diag": 5.4,
+    "size": 0.68
+  },
+  "GHA": {
+    "name": "Ghana",
+    "diag": 7.82,
+    "size": 0.754
+  },
+  "GNB": {
+    "name": "Guinea-Bissau",
+    "diag": 3.53,
+    "size": 0.618
+  },
+  "GIB": {
+    "name": "Gibraltar",
+    "diag": 0.04,
+    "size": 0.3
+  },
+  "USA": {
+    "name": "United States of America",
+    "diag": 62.64,
+    "size": 1.346
+  },
+  "CAN": {
+    "name": "Canada",
+    "diag": 90.62,
+    "size": 1.465
+  },
+  "MEX": {
+    "name": "Mexico",
+    "diag": 35.4,
+    "size": 1.158
+  },
+  "BLZ": {
+    "name": "Belize",
+    "diag": 2.85,
+    "size": 0.594
+  },
+  "PAN": {
+    "name": "Panama",
+    "diag": 6.37,
+    "size": 0.711
+  },
+  "VEN": {
+    "name": "Venezuela",
+    "diag": 17.82,
+    "size": 0.949
+  },
+  "PNG": {
+    "name": "Papua New Guinea",
+    "diag": 12.9,
+    "size": 0.868
+  },
+  "EGY": {
+    "name": "Egypt",
+    "diag": 15.57,
+    "size": 0.913
+  },
+  "YEM": {
+    "name": "Yemen",
+    "diag": 12.28,
+    "size": 0.858
+  },
+  "MRT": {
+    "name": "Mauritania",
+    "diag": 17.54,
+    "size": 0.945
+  },
+  "GNQ": {
+    "name": "Eq. Guinea",
+    "diag": 2.44,
+    "size": 0.578
+  },
+  "GMB": {
+    "name": "Gambia",
+    "diag": 3.1,
+    "size": 0.603
+  },
+  "HKG": {
+    "name": "Hong Kong",
+    "diag": 0.59,
+    "size": 0.465
+  },
+  "VAT": {
+    "name": "Vatican",
+    "diag": 0,
+    "size": 0.3
+  },
+  "CYN": {
+    "name": "N. Cyprus",
+    "diag": 2,
+    "size": 0.56
+  },
+  "CNM": {
+    "name": "Cyprus U.N. Buffer Zone",
+    "diag": 1.05,
+    "size": 0.522
+  },
+  "KAS": {
+    "name": "Siachen Glacier",
+    "diag": 1.16,
+    "size": 0.526
+  },
+  "KAB": {
+    "name": "Baikonur",
+    "diag": 1.43,
+    "size": 0.537
+  },
+  "WSB": {
+    "name": "Akrotiri",
+    "diag": 0.3,
+    "size": 0.427
+  },
+  "SPI": {
+    "name": "Southern Patagonian Ice Field",
+    "diag": 0.72,
+    "size": 0.483
+  },
+  "BRT": {
+    "name": "Bir Tawil",
+    "diag": 0.95,
+    "size": 0.513
+  },
+  "ATA": {
+    "name": "Antarctica",
+    "diag": 361,
+    "size": 1.62
+  },
+  "AUS": {
+    "name": "Australia",
+    "diag": 49.48,
+    "size": 1.261
+  },
+  "GRL": {
+    "name": "Greenland",
+    "diag": 66.06,
+    "size": 1.366
+  },
+  "FJI": {
+    "name": "Fiji",
+    "diag": 1.75,
+    "size": 0.55
+  },
+  "NZL": {
+    "name": "New Zealand",
+    "diag": 10,
+    "size": 0.82
+  },
+  "NCL": {
+    "name": "New Caledonia",
+    "diag": 3.83,
+    "size": 0.628
+  },
+  "MDG": {
+    "name": "Madagascar",
+    "diag": 15.47,
+    "size": 0.911
+  },
+  "PHL": {
+    "name": "Philippines",
+    "diag": 7.55,
+    "size": 0.746
+  },
+  "LKA": {
+    "name": "Sri Lanka",
+    "diag": 4.48,
+    "size": 0.649
+  },
+  "CUW": {
+    "name": "Curaçao",
+    "diag": 0.56,
+    "size": 0.461
+  },
+  "ABW": {
+    "name": "Aruba",
+    "diag": 0.28,
+    "size": 0.424
+  },
+  "BHS": {
+    "name": "Bahamas",
+    "diag": 1.18,
+    "size": 0.527
+  },
+  "TCA": {
+    "name": "Turks and Caicos Is.",
+    "diag": 0.25,
+    "size": 0.418
+  },
+  "TWN": {
+    "name": "Taiwan",
+    "diag": 3.91,
+    "size": 0.63
+  },
+  "JPN": {
+    "name": "Japan",
+    "diag": 13.84,
+    "size": 0.884
+  },
+  "SPM": {
+    "name": "St. Pierre and Miquelon",
+    "diag": 0.39,
+    "size": 0.439
+  },
+  "ISL": {
+    "name": "Iceland",
+    "diag": 11.47,
+    "size": 0.845
+  },
+  "PCN": {
+    "name": "Pitcairn Is.",
+    "diag": 0.11,
+    "size": 0.335
+  },
+  "PYF": {
+    "name": "Fr. Polynesia",
+    "diag": 0.62,
+    "size": 0.469
+  },
+  "ATF": {
+    "name": "Fr. S. Antarctic Lands",
+    "diag": 2.11,
+    "size": 0.564
+  },
+  "SYC": {
+    "name": "Seychelles",
+    "diag": 0.3,
+    "size": 0.426
+  },
+  "KIR": {
+    "name": "Kiribati",
+    "diag": 0.52,
+    "size": 0.456
+  },
+  "MHL": {
+    "name": "Marshall Is.",
+    "diag": 0.37,
+    "size": 0.436
+  },
+  "TTO": {
+    "name": "Trinidad and Tobago",
+    "diag": 1.3,
+    "size": 0.532
+  },
+  "GRD": {
+    "name": "Grenada",
+    "diag": 0.3,
+    "size": 0.427
+  },
+  "VCT": {
+    "name": "St. Vin. and Gren.",
+    "diag": 0.29,
+    "size": 0.426
+  },
+  "BRB": {
+    "name": "Barbados",
+    "diag": 0.37,
+    "size": 0.436
+  },
+  "LCA": {
+    "name": "Saint Lucia",
+    "diag": 0.44,
+    "size": 0.446
+  },
+  "DMA": {
+    "name": "Dominica",
+    "diag": 0.49,
+    "size": 0.453
+  },
+  "UMI": {
+    "name": "U.S. Minor Outlying Is.",
+    "diag": 0.05,
+    "size": 0.3
+  },
+  "MSR": {
+    "name": "Montserrat",
+    "diag": 0.17,
+    "size": 0.372
+  },
+  "ATG": {
+    "name": "Antigua and Barb.",
+    "diag": 0.29,
+    "size": 0.425
+  },
+  "KNA": {
+    "name": "St. Kitts and Nevis",
+    "diag": 0.31,
+    "size": 0.428
+  },
+  "VIR": {
+    "name": "U.S. Virgin Is.",
+    "diag": 0.35,
+    "size": 0.434
+  },
+  "BLM": {
+    "name": "St-Barthélemy",
+    "diag": 0.09,
+    "size": 0.324
+  },
+  "PRI": {
+    "name": "Puerto Rico",
+    "diag": 1.78,
+    "size": 0.551
+  },
+  "AIA": {
+    "name": "Anguilla",
+    "diag": 0.22,
+    "size": 0.404
+  },
+  "VGB": {
+    "name": "British Virgin Is.",
+    "diag": 0.21,
+    "size": 0.396
+  },
+  "JAM": {
+    "name": "Jamaica",
+    "diag": 2.34,
+    "size": 0.573
+  },
+  "CYM": {
+    "name": "Cayman Is.",
+    "diag": 0.35,
+    "size": 0.434
+  },
+  "BMU": {
+    "name": "Bermuda",
+    "diag": 0.28,
+    "size": 0.424
+  },
+  "HMD": {
+    "name": "Heard I. and McDonald Is.",
+    "diag": 0.62,
+    "size": 0.469
+  },
+  "SHN": {
+    "name": "Saint Helena",
+    "diag": 0.18,
+    "size": 0.378
+  },
+  "MUS": {
+    "name": "Mauritius",
+    "diag": 0.73,
+    "size": 0.484
+  },
+  "COM": {
+    "name": "Comoros",
+    "diag": 0.64,
+    "size": 0.472
+  },
+  "STP": {
+    "name": "São Tomé and Principe",
+    "diag": 0.49,
+    "size": 0.452
+  },
+  "CPV": {
+    "name": "Cabo Verde",
+    "diag": 0.55,
+    "size": 0.46
+  },
+  "MLT": {
+    "name": "Malta",
+    "diag": 0.31,
+    "size": 0.428
+  },
+  "JEY": {
+    "name": "Jersey",
+    "diag": 0.25,
+    "size": 0.42
+  },
+  "GGY": {
+    "name": "Guernsey",
+    "diag": 0.19,
+    "size": 0.386
+  },
+  "IMN": {
+    "name": "Isle of Man",
+    "diag": 0.6,
+    "size": 0.467
+  },
+  "ALD": {
+    "name": "Åland",
+    "diag": 0.73,
+    "size": 0.483
+  },
+  "FRO": {
+    "name": "Faeroe Is.",
+    "diag": 0.66,
+    "size": 0.474
+  },
+  "IOA": {
+    "name": "Indian Ocean Ter.",
+    "diag": 0.19,
+    "size": 0.384
+  },
+  "IOT": {
+    "name": "Br. Indian Ocean Ter.",
+    "diag": 0.21,
+    "size": 0.394
+  },
+  "SGP": {
+    "name": "Singapore",
+    "diag": 0.41,
+    "size": 0.441
+  },
+  "NFK": {
+    "name": "Norfolk Island",
+    "diag": 0.12,
+    "size": 0.341
+  },
+  "COK": {
+    "name": "Cook Is.",
+    "diag": 0.13,
+    "size": 0.348
+  },
+  "TON": {
+    "name": "Tonga",
+    "diag": 0.38,
+    "size": 0.437
+  },
+  "WLF": {
+    "name": "Wallis and Futuna Is.",
+    "diag": 0.16,
+    "size": 0.366
+  },
+  "WSM": {
+    "name": "Samoa",
+    "diag": 0.7,
+    "size": 0.48
+  },
+  "SLB": {
+    "name": "Solomon Is.",
+    "diag": 1.41,
+    "size": 0.537
+  },
+  "TUV": {
+    "name": "Tuvalu",
+    "diag": 0.09,
+    "size": 0.321
+  },
+  "MDV": {
+    "name": "Maldives",
+    "diag": 0.15,
+    "size": 0.358
+  },
+  "NRU": {
+    "name": "Nauru",
+    "diag": 0.08,
+    "size": 0.318
+  },
+  "FSM": {
+    "name": "Micronesia",
+    "diag": 0.29,
+    "size": 0.425
+  },
+  "SGS": {
+    "name": "S. Geo. and the Is.",
+    "diag": 2.43,
+    "size": 0.577
+  },
+  "FLK": {
+    "name": "Falkland Is.",
+    "diag": 2.27,
+    "size": 0.571
+  },
+  "VUT": {
+    "name": "Vanuatu",
+    "diag": 1.26,
+    "size": 0.53
+  },
+  "NIU": {
+    "name": "Niue",
+    "diag": 0.24,
+    "size": 0.417
+  },
+  "ASM": {
+    "name": "American Samoa",
+    "diag": 0.29,
+    "size": 0.425
+  },
+  "PLW": {
+    "name": "Palau",
+    "diag": 0.42,
+    "size": 0.443
+  },
+  "GUM": {
+    "name": "Guam",
+    "diag": 0.53,
+    "size": 0.457
+  },
+  "MNP": {
+    "name": "N. Mariana Is.",
+    "diag": 0.23,
+    "size": 0.406
+  },
+  "BHR": {
+    "name": "Bahrain",
+    "diag": 0.49,
+    "size": 0.453
+  },
+  "CSI": {
+    "name": "Coral Sea Is.",
+    "diag": 0,
+    "size": 0.3
+  },
+  "PGA": {
+    "name": "Spratly Is.",
+    "diag": 0.03,
+    "size": 0.3
+  },
+  "CLP": {
+    "name": "Clipperton I.",
+    "diag": 0.04,
+    "size": 0.3
+  },
+  "MAC": {
+    "name": "Macao",
+    "diag": 0.08,
+    "size": 0.319
+  },
+  "ATC": {
+    "name": "Ashmore and Cartier Is.",
+    "diag": 0.03,
+    "size": 0.3
+  },
+  "BJN": {
+    "name": "Bajo Nuevo Bank",
+    "diag": 0,
+    "size": 0.3
+  },
+  "SER": {
+    "name": "Serranilla Bank",
+    "diag": 0.01,
+    "size": 0.3
+  },
+  "SCR": {
+    "name": "Scarborough Reef",
+    "diag": 0.01,
+    "size": 0.3
+  }
+}
