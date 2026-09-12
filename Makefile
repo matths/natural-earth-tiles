@@ -5,7 +5,7 @@
 #   make/vector.mk          vector tiles -> ./tiles/    (Natural Earth countries)
 #   make/raster.mk          raster tiles -> ./raster/   (Natural Earth II PNG)
 #   make/maplibre-gl.mk     maplibre-gl npm dist -> js/ + css/
-#   make/font.mk            Noto glyph pbfs -> ./font/  (MapLibre glyph source)
+#   make/font.mk            Noto woff2 font faces -> ./font/  (MapLibre font-faces source)
 #   make/country-sizes.mk   label sizes -> ./country-sizes.json (from vector data)
 #
 # Usage:
@@ -39,7 +39,7 @@ help:
 	@echo '  vector          vector tiles  -> ./tiles/    (Natural Earth countries, MVT z0-8)'
 	@echo '  raster          raster tiles  -> ./raster/   (Natural Earth II shaded relief, PNG z0-6)'
 	@echo '  maplibre-gl     npm dist of maplibre-gl copied to js/ + css/'
-	@echo '  font            Noto glyph pbfs -> ./font/   (glyph source for text labels)'
+	@echo '  font            Noto woff2 font faces -> ./font/  (glyph source for labels)'
 	@echo '  country-sizes   country label sizes -> ./country-sizes.json'
 	@echo ''
 	@echo 'Usage:'

@@ -7,13 +7,13 @@ Builds the deployable assets of a MapLibre map served from GitHub Pages:
 | **vector** (MVT tiles)          | `make vector`      | `./tiles/` `{z}/{x}/{y}.pbf` z0-8   | Natural Earth 1:10m admin-0 countries         |
 | **raster** (PNG tiles)          | `make raster`      | `./raster/` `{z}/{x}/{y}.png` z0-6  | Natural Earth II 1:10m LR shaded relief        |
 | **maplibre-gl** (vendored JS)   | `make maplibre-gl` | `js/` + `css/`                      | the `maplibre-gl` npm package (see package.json) |
-| **font** (glyph PBFs)           | `make font`        | `./font/` `<stack>/<range>.pbf`     | Google Noto Sans (via fontnik)                |
+| **font** (webfonts)             | `make font`        | `./font/` `faces/*.woff2` + `font-faces.json` | Google Fonts Noto subsets (woff2)  |
 | **country-sizes** (label sizes) | `make country-sizes` | `./country-sizes.json`           | vector module's `countries.geojson`           |
 
 The root [`Makefile`](./Makefile) is a small **dispatcher**; each module is its own
 self-contained makefile under [`make/`](./make/), run as its own make process so module
 variables and clean semantics never collide. Builds are incremental and cached under the
-gitignored `.vector-src/`, `.raster-src/`, `.font-src/`, `.font-tools/` (`node_modules/` too).
+gitignored `.vector-src/`, `.raster-src/`, `.font-src/` (`node_modules/` too).
 
 ## Quick start
 
@@ -22,7 +22,7 @@ make             # help (default goal)
 make vector      # vector tiles -> ./tiles/
 make raster      # raster tiles -> ./raster/
 make maplibre-gl # maplibre-gl dist -> js/ + css/
-make font        # Noto glyphs -> ./font/
+make font        # Noto woff2 font faces -> ./font/
 make country-sizes # country label sizes -> ./country-sizes.json
 make all         # all modules, in order
 make check       # check the tools every module needs
@@ -52,7 +52,7 @@ make raster RASTER_MAX_ZOOM=4
 `vector-prune` removes only the vector build cache (keeps `./tiles/`); `vector-clean`
 also removes the published `./tiles/`. `raster-clean` removes `./raster/` + its cache.
 `maplibre-gl-clean` removes `js/`, `css/` and `node_modules/`. `font-clean` removes
-`./font/` plus the `.font-src/`/`.font-tools/` caches.
+`./font/` plus the `.font-src/` cache.
 `country-sizes-clean` removes `./country-sizes.json`.
 
 ## Vector module
@@ -124,21 +124,30 @@ To bump MapLibre: `npm install maplibre-gl@latest --save-dev`, then
 
 ## Font module
 
-MapLibre glyph PBFs (`./font/<Font Stack>/<range>.pbf`) built from Google Fonts' Noto
-Sans (Regular/Bold + Arabic + Hebrew) with `fontnik`. This is what `style.json`'s
-`"glyphs": "font/{fontstack}/{range}.pbf"` reads.
+Noto **webfonts** - `./font/faces/*.woff2` plus the generated `./font/font-faces.json`
+- downloaded from Google Fonts. `main.js` merges `font-faces.json` into the style's
+`font-faces` property, which tells MapLibre which font file to use for each character
+based on that file's `unicode-range`. One `text-font` name therefore covers Latin,
+Greek, Cyrillic, Devanagari, Arabic, Hebrew and Bengali at once - no per-language font
+choice and no per-script font stack.
 
 ```sh
-make font                 # all glyph sets -> ./font/ (incremental)
+make font                 # download/refresh faces + write font-faces.json
 make font FONT_DIR=/tmp/font
+make font-clean           # remove ./font/ and the .font-src/ cache
 ```
 
-Requires `curl`, `node`, `npm` (`make font-check`); `fontnik` installs prebuilt binaries
-into the gitignored `.font-tools/`, while ttfs/CSS are cached in `.font-src/`.
+Requires `curl` and `node` (`make font-check`). Google's CSS responses are cached in the
+gitignored `.font-src/`; woff2 files that already exist are not re-downloaded.
 
-Important: point `text-font` at a **single** built font (e.g. `["Noto Sans Regular"]`).
-Static hosts serve one glyph request per stack and cannot merge glyphs across the
-separate `./font/<font>/` folders, so a multi-font stack 404s.
+**Why not glyph PBFs?** A glyph stack is a *single* font, and MapLibre cannot fall back
+to another stack for characters it cannot draw (the `glyphs` URL contains one
+comma-joined `{fontstack}` path segment, which 404s on static hosts). `font-faces` gives
+real per-character fallback; the price is that the client downloads only the subsets the
+visible labels need (~0.6 MB for the whole set, fetched lazily per script).
+
+CJK/Hangul are intentionally **not** bundled (they are very large); MapLibre draws
+ideographs locally using the map's `localIdeographFontFamily` (default `sans-serif`).
 
 ## country-sizes module
 
@@ -160,7 +169,7 @@ only `make vector`'s `geojson` step, so no tiles are built. Requires `node`
 
 Commit the module outputs to the GitHub Pages branch: `./tiles/`, `./raster/`, `js/`,
 `css/`, `./font/`, `./country-sizes.json` (caches `.vector-src/`, `.raster-src/`,
-`.font-src/`, `.font-tools/`, `node_modules/` are gitignored).
+`.font-src/`, `node_modules/` are gitignored).
 
 `tiles.json` defaults to the repo's GitHub Pages path
 (`https://matths.github.io/natural-earth-tiles/tiles/`). For local development, repoint
@@ -178,16 +187,16 @@ make/
   vector.mk               vector module (build + publish)
   raster.mk               raster module
   maplibre-gl.mk          maplibre-gl module
-  font.mk                 Noto glyph module
+  font.mk                 Noto webfont module
   country-sizes.mk        country label-size module
-scripts/                  shared helpers (check-deps, raster-prep, font-build, create_country_sizes.mjs, ...)
+scripts/                  shared helpers (check-deps, raster-prep, font-build.mjs, create_country_sizes.mjs, ...)
 .vector-src/              vector cache (gitignored)
 .raster-src/              raster cache (gitignored)
-.font-src/ .font-tools/   font caches (gitignored)
+.font-src/                font download cache (gitignored)
 tiles/                    vector tiles output (committed)
 raster/                   raster tiles output (committed)
 js/ css/                  maplibre-gl dist (committed)
-font/                     Noto glyph pbfs (committed)
+font/                     Noto woff2 faces + font-faces.json (committed)
 country-sizes.json        country label sizes (committed)
 package.json              maplibre-gl npm dependency
 ```

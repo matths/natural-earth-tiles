@@ -1,36 +1,40 @@
-# make/font.mk - Noto glyph module (runs as its own make process)
+# make/font.mk - Noto web-font module (runs as its own make process)
 #
-# Builds MapLibre glyph PBFs into ./font/<Font Stack>/<range>.pbf from Google
-# Fonts' Noto Sans (Regular/Bold + Arabic + Hebrew) via fontnik. This is what
-# style.json's "glyphs" source reads.
+# Downloads Noto woff2 subsets from Google Fonts into ./font/faces/ and writes
+# ./font/font-faces.json - the per-character font fallback map that main.js
+# merges into style.json's "font-faces" property.
 #
-#   make font          build all glyph sets (incremental) -> ./font/
-#   make font-clean    remove ./font/ + .font-src/ + .font-tools/ caches
-#   make font-check    verify curl, node, npm
+#   make font          download/refresh the font faces -> ./font/
+#   make font-clean    remove ./font/ and the .font-src/ cache
+#   make font-check    verify curl + node
 #
-# Requires: curl, node, npm (fontnik installs prebuilt binaries - see
-# scripts/font-build.sh). The engine lives in scripts/font-build.sh and handles
-# the CSS fetch, ttf download and glyph building; this file only orchestrates.
+# Why not glyph PBFs: a glyph stack holds ONE font, and MapLibre cannot fall
+# back to a second stack for characters it cannot draw (the glyphs URL contains
+# a single comma-joined {fontstack} path segment, which 404s on static hosts).
+# "font-faces" instead resolves every character against a list of font files
+# with unicode-ranges, so one text-font name covers Latin/Greek/Cyrillic/
+# Devanagari/Arabic/Hebrew/Bengali. CJK/Hangul stay local, drawn by MapLibre
+# via localIdeographFontFamily.
 #
-# In style.json point text-font at ONE built font (e.g. "Noto Sans Regular") -
-# static hosts serve one glyph request per stack and cannot merge glyphs across
-# the separate ./font/<font>/ folders.
+# The engine lives in scripts/font-build.mjs (fetch CSS + download woff2 +
+# emit JSON); this file only orchestrates.
 
 SHELL := /bin/bash
 ROOT  := $(abspath $(dir $(firstword $(MAKEFILE_LIST)))/..)
+SCRIPTS := $(ROOT)/scripts
 
-# where the glyph pbf output goes - commit this folder
+# where the fonts are published - commit this folder
 FONT_DIR ?= $(ROOT)/font
 
 .PHONY: font clean check
 .DEFAULT_GOAL := font
 
 font: check
-	@$(ROOT)/scripts/font-build.sh "$(ROOT)" "$(FONT_DIR)"
+	@node $(SCRIPTS)/font-build.mjs "$(ROOT)" "$(FONT_DIR)"
 
 clean:
-	@echo ">> font-clean: removing $(FONT_DIR) and caches .font-src/ .font-tools/"
-	@rm -rf "$(FONT_DIR)" "$(ROOT)/.font-src" "$(ROOT)/.font-tools"
+	@echo ">> font-clean: removing $(FONT_DIR) and cache .font-src/"
+	@rm -rf "$(FONT_DIR)" "$(ROOT)/.font-src"
 
 check:
-	@$(ROOT)/scripts/check-deps.sh font
+	@$(SCRIPTS)/check-deps.sh font
