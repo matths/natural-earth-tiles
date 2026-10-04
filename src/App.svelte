@@ -1,10 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import type { Map as MapLibreMap } from "maplibre-gl";
+  import type { IControl, Map as MapLibreMap } from "maplibre-gl";
   import { applyFontFaces } from "./lib/apply-font-faces";
   import { createLanguageLabels, type LanguageLabels } from "./lib/create-language-labels";
   import { createMap } from "./lib/create-map";
   import { createStyleSwitcher, type StyleSwitcher } from "./lib/create-style-switcher";
+  import { createThemeControl } from "./lib/create-theme-control";
   import { enableCountryHover } from "./lib/enable-country-hover";
   import { loadFontFaces } from "./lib/load-font-faces";
   import { loadTileJson } from "./lib/load-tile-json";
@@ -14,6 +15,7 @@
     map: MapLibreMap;
     languageLabels: LanguageLabels;
     styleSwitcher: StyleSwitcher;
+    themeControl: IControl;
   };
 
   let mapContainer = $state<HTMLDivElement | null>(null);
@@ -29,7 +31,10 @@
     enableCountryHover(map);
     const styleSwitcher = createStyleSwitcher(map);
 
-    return { map, languageLabels, styleSwitcher };
+    const themeControl = createThemeControl();
+    map.addControl(themeControl);
+
+    return { map, languageLabels, styleSwitcher, themeControl };
   };
 
   onMount(() => {
@@ -40,9 +45,11 @@
     let app: MapApp | null = null;
 
     const tearDown = (): void => {
-      app?.styleSwitcher.destroy();
-      app?.languageLabels.destroy();
-      app?.map.remove();
+      if (!app) return;
+      app.styleSwitcher.destroy();
+      app.languageLabels.destroy();
+      app.map.removeControl(app.themeControl);
+      app.map.remove();
       app = null;
     };
 

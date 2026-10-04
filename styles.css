@@ -1,3 +1,32 @@
+/* In globe projection the void around the globe is this element's own
+   background (the style's "background" layer does not paint there), so the page
+   and the guide share one surface. Dark is the default palette; the on-map
+   ThemeControl button switches to the light one by setting
+   <html data-theme="light">. */
+:root {
+  --backdrop: #0d1b2a;
+  --text: #dfe8f2;
+  --border: #3a5170;
+  --code-bg: #08121d;
+  --code-fg: #cbd6e2;
+  --pre-bg: #08121d;
+  --pre-fg: #cbd6e2;
+  --th-bg: #08121d;
+  --zebra: rgba(255, 255, 255, 0.03);
+}
+
+:root[data-theme="light"] {
+  --backdrop: #f0f0f0;
+  --text: #333;
+  --border: #ddd;
+  --code-bg: #f3f3f3;
+  --code-fg: #333;
+  --pre-bg: #333;
+  --pre-fg: #ccc;
+  --th-bg: #f6f6f6;
+  --zebra: #fafafa;
+}
+
 html,
 body {
   height: 100%;
@@ -5,7 +34,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #333;
+  background-color: var(--backdrop);
+  color: var(--text);
 }
 
 body {
@@ -31,8 +61,8 @@ p {
 }
 
 pre {
-  background-color: #333;
-  color: #ccc;
+  background-color: var(--pre-bg);
+  color: var(--pre-fg);
   border-radius: 3px;
   padding: 1em;
   white-space: pre-break;
@@ -46,7 +76,8 @@ pre.shell::before {
 code {
   font-family: "SF Mono", Menlo, Consolas, monospace;
   font-size: 0.85em;
-  background-color: #f3f3f3;
+  background-color: var(--code-bg);
+  color: var(--code-fg);
   border-radius: 3px;
   padding: 0.1em 0.35em;
 }
@@ -69,19 +100,19 @@ table {
 
 th,
 td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   padding: 0.4em 0.6em;
   text-align: left;
   vertical-align: top;
 }
 
 th {
-  background-color: #f6f6f6;
+  background-color: var(--th-bg);
   color: #39c;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #fafafa;
+  background-color: var(--zebra);
 }
 
 small {
@@ -97,7 +128,7 @@ small {
 }
 
 #map {
-  background: #fff;
+  background: var(--backdrop);
   position: relative;
   width: 60vw;
   height: 100vh;

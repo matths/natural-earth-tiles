@@ -92,7 +92,16 @@
   "zoom": 1.0,
   "pitch": 0,
   "bearing": 0,
-  "projection": { "type": "mercator" },
+  "projection": { "type": "globe" },
+  "sky": {
+    "sky-color": "#199EF3",
+    "sky-horizon-blend": 0.5,
+    "horizon-color": "#ffffff",
+    "horizon-fog-blend": 0.5,
+    "fog-color": "#000000",
+    "fog-ground-blend": 0.5,
+    "atmosphere-blend": ["interpolate", ["linear"], ["zoom"], 0, 1, 8, 0.4]
+  },
   "transition": { "duration": 400, "delay": 0 },
   "sources": {
     "netiles": {
