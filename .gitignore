@@ -1,0 +1,16 @@
+# build caches (regenerable)
+.vector-src/
+.raster-src/
+.font-src/
+node_modules/
+dist/
+.DS_Store
+
+# built artifacts - these are committed on the gh-pages branch, not on main
+/tiles/
+/raster/
+/font/
+/js/
+/css/
+/main.js
+/country-sizes.json

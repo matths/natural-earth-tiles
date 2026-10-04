@@ -1,0 +1,42 @@
+{
+  "name": "natural-earth-tiles",
+  "version": "1.0.0",
+  "description": "Create MapLibreGL compatible tiles from Natrual Earth data hosted using GitHub pages.",
+  "keywords": [
+    "map",
+    "vector",
+    "tiles",
+    "geography",
+    "countries"
+  ],
+  "homepage": "https://github.com/matths/natural-earth-tiles#readme",
+  "bugs": {
+    "url": "https://github.com/matths/natural-earth-tiles/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matths/natural-earth-tiles.git"
+  },
+  "license": "MIT",
+  "author": "Matthias Dittgen <dittgen@gmail.com>",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "make maplibre-gl",
+    "dev": "vite",
+    "app": "make app",
+    "app:watch": "vite build --watch",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^26.6.2",
+    "maplibre-gl": "^6.7.0",
+    "svelte": "^5.57.1",
+    "svelte-check": "^4.7.6",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.0"
+  }
+}
