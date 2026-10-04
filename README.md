@@ -226,6 +226,11 @@ tiles** and **mixed** — and "transitions" between them: it only writes paint (
 properties, so MapLibre animates the change with the `transition` duration from
 `style.json` instead of swapping styles.
 
+The theme switch (a ☀/☾ button beside it) toggles the page between the default dark
+palette and the original light one. Both palettes are the CSS variables at the top of
+`styles.css`, picked by `<html data-theme="light">`, so the map void and the guide behind
+it always match.
+
 ### Tweaking the variations
 
 The variations are **part of `style.json`**, not of the app — `metadata.styleVariants`

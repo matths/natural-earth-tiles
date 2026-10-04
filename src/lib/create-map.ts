@@ -9,12 +9,19 @@ export type MapOptions = {
 };
 
 const defaultMaxZoom = 8;
-const globeReferencePixels = 150;
+
+// Approximate zoom for the globe: MapLibre's globe radius is
+// 512 * 2^zoom / (2 * PI * cos(lat)) pixels, so a shorter frame side of ~150 px
+// per zoom step lands the disc just inside the frame. `globeFrameUsage` then
+// keeps a little space around it, which also leaves room for the atmosphere glow.
+const globeFitDivisor = 150;
+const globeFrameUsage = 0.9;
 
 const fitGlobeToContainer = (map: MapLibreMap): void => {
-  const { offsetWidth, offsetHeight } = map.getContainer();
-  const pixels = Math.min(offsetWidth, offsetHeight);
-  map.flyTo({ zoom: Math.log2(pixels / globeReferencePixels), essential: true });
+  const { offsetWidth: width, offsetHeight: height } = map.getContainer();
+  if (!width || !height) return;
+  const frame = Math.min(width, height) * globeFrameUsage;
+  map.flyTo({ zoom: Math.log2(frame / globeFitDivisor), essential: true });
 };
 
 const addCornerControls = (map: MapLibreMap): void => {
