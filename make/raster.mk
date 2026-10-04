@@ -62,7 +62,7 @@ $(STAMP): $(RASTER_SRC) | check
 	@touch $@
 
 # --- public targets ----------------------------------------------------------
-.PHONY: raster clean check
+.PHONY: raster clean prune check
 raster: $(STAMP)
 	@n=$$(find "$(RASTER_OUT)" -name '*.png' | wc -l | tr -d ' '); \
 	echo; \
@@ -73,6 +73,10 @@ raster: $(STAMP)
 clean:
 	@echo ">> raster-clean: removing $(RASTER_OUT) and build cache $(RASTER_WORK)"
 	@rm -rf $(RASTER_OUT) $(RASTER_WORK)
+
+prune:
+	@echo ">> raster-prune: removing build cache $(RASTER_WORK)"
+	@rm -rf $(RASTER_WORK)
 
 check:
 	@$(ROOT)/scripts/check-deps.sh raster

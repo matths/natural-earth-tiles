@@ -19,7 +19,7 @@ ROOT  := $(abspath $(dir $(firstword $(MAKEFILE_LIST)))/..)
 # the committed bundle that index.html loads
 APP_OUT ?= $(ROOT)/main.js
 
-.PHONY: app clean check
+.PHONY: app clean prune check
 .DEFAULT_GOAL := app
 
 app: check
@@ -33,6 +33,10 @@ app: check
 clean:
 	@echo ">> app-clean: removing $(ROOT)/dist and $(APP_OUT)"
 	@rm -rf "$(ROOT)/dist" "$(APP_OUT)"
+
+prune:
+	@echo ">> app-prune: removing $(ROOT)/dist"
+	@rm -rf "$(ROOT)/dist"
 
 check:
 	@$(ROOT)/scripts/check-deps.sh app

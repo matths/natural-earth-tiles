@@ -23,7 +23,7 @@ FILES := maplibre-gl.mjs maplibre-gl.mjs.map \
 # bare `make -f make/maplibre-gl.mk` (as the dispatcher does) builds the module
 .DEFAULT_GOAL := maplibre-gl
 
-.PHONY: maplibre-gl clean check
+.PHONY: maplibre-gl clean prune check
 maplibre-gl: check
 	@test -d "$(DIST)" || (cd "$(ROOT)" && npm install)
 	@mkdir -p "$(ROOT)/js" "$(ROOT)/css"
@@ -35,6 +35,10 @@ maplibre-gl: check
 clean:
 	@echo ">> maplibre-gl-clean: removing js/ css/ and node_modules/"
 	@rm -rf "$(ROOT)/js" "$(ROOT)/css" "$(ROOT)/node_modules"
+
+prune:
+	@echo ">> maplibre-gl-prune: removing node_modules/"
+	@rm -rf "$(ROOT)/node_modules"
 
 check:
 	@$(ROOT)/scripts/check-deps.sh maplibre-gl

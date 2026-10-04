@@ -26,7 +26,7 @@ SCRIPTS := $(ROOT)/scripts
 # where the fonts are published - commit this folder
 FONT_DIR ?= $(ROOT)/font
 
-.PHONY: font clean check
+.PHONY: font clean prune check
 .DEFAULT_GOAL := font
 
 font: check
@@ -35,6 +35,10 @@ font: check
 clean:
 	@echo ">> font-clean: removing $(FONT_DIR) and cache .font-src/"
 	@rm -rf "$(FONT_DIR)" "$(ROOT)/.font-src"
+
+prune:
+	@echo ">> font-prune: removing cache .font-src/"
+	@rm -rf "$(ROOT)/.font-src"
 
 check:
 	@$(SCRIPTS)/check-deps.sh font

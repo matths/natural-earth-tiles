@@ -14,6 +14,8 @@
 #   make <module>               build one module with its defaults
 #   make all                    build every module
 #   make check                  check the tools every module needs
+#   make clean                  remove every generated file (published output + caches)
+#   make prune                  remove only the re-downloadable caches (keep the output)
 #   make <module>-clean|-prune|-check   module maintenance
 #   make help                   this message
 #
@@ -30,7 +32,7 @@
 SHELL := /bin/bash
 ROOT  := $(abspath $(dir $(firstword $(MAKEFILE_LIST))))
 
-.PHONY: help all check
+.PHONY: help all clean prune check
 .DEFAULT_GOAL := help
 
 help:
@@ -40,12 +42,16 @@ help:
 	@echo '  vector          vector tiles  -> ./tiles/    (Natural Earth countries, MVT z0-8)'
 	@echo '  raster          raster tiles  -> ./raster/   (Natural Earth II shaded relief, PNG z0-6)'
 	@echo '  maplibre-gl     npm dist of maplibre-gl copied to js/ + css/'
-	@echo '  font            Noto woff2 font faces -> ./font/  (glyph source for labels)'    @echo '  app             Svelte 5 app -> ./main.js   (Vite bundle loaded by index.html)'	@echo '  country-sizes   country label sizes -> ./country-sizes.json'
+	@echo '  font            Noto woff2 font faces -> ./font/  (glyph source for labels)'
+	@echo '  app             Svelte 5 app -> ./main.js   (Vite bundle loaded by index.html)'
+	@echo '  country-sizes   country label sizes -> ./country-sizes.json'
 	@echo ''
 	@echo 'Usage:'
 	@echo '  make <module>                   build one module (its defaults)'
 	@echo '  make all                        build vector + raster + maplibre-gl + font + country-sizes'
 	@echo '  make check                      check the tools every module needs'
+	@echo '  make clean                      remove published files + caches (all modules)'
+	@echo '  make prune                      remove only the build caches (all modules)'
 	@echo '  make <module>-clean|-prune|-check module maintenance'
 	@echo '    e.g. make vector-clean, make font-clean, make country-sizes-clean'
 	@echo '  make help                       this message'
@@ -62,6 +68,17 @@ help:
 # --- aggregates ------------------------------------------------------------
 all: vector raster maplibre-gl font country-sizes app
 
+# Everything the modules generate - published output plus build caches. The
+# hand-written files (index.html, style.json, styles.css, src/, Makefile,
+# README.md, ...) are never touched, so `make clean && make all` rebuilds the
+# committed state. Build variables pass through, e.g. `make clean OUT_DIR=/tmp/x`.
+clean: vector-clean raster-clean maplibre-gl-clean font-clean country-sizes-clean app-clean
+
+# Only what is re-downloaded or re-derived (sources + node_modules); tiles/,
+# raster/, font/, js/, css/, main.js and country-sizes.json stay in place.
+# country-sizes has no cache of its own - its input is the vector cache.
+prune: vector-prune raster-prune maplibre-gl-prune font-prune app-prune
+
 check: vector-check raster-check maplibre-gl-check font-check country-sizes-check app-check
 
 # --- vector -----------------------------------------------------------------
@@ -72,27 +89,31 @@ vector-prune:  ; $(MAKE) -C $(ROOT) -f make/vector.mk prune
 vector-check:  ; $(MAKE) -C $(ROOT) -f make/vector.mk check
 
 # --- raster -----------------------------------------------------------------
-.PHONY: raster raster-clean raster-check
+.PHONY: raster raster-clean raster-prune raster-check
 raster:        ; $(MAKE) -C $(ROOT) -f make/raster.mk
 raster-clean:  ; $(MAKE) -C $(ROOT) -f make/raster.mk clean
+raster-prune:  ; $(MAKE) -C $(ROOT) -f make/raster.mk prune
 raster-check:  ; $(MAKE) -C $(ROOT) -f make/raster.mk check
 
 # --- maplibre-gl ------------------------------------------------------------
-.PHONY: maplibre-gl maplibre-gl-clean maplibre-gl-check
+.PHONY: maplibre-gl maplibre-gl-clean maplibre-gl-prune maplibre-gl-check
 maplibre-gl:       ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk
 maplibre-gl-clean: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk clean
+maplibre-gl-prune: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk prune
 maplibre-gl-check: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk check
 
 # --- font -------------------------------------------------------------------
-.PHONY: font font-clean font-check
+.PHONY: font font-clean font-prune font-check
 font:        ; $(MAKE) -C $(ROOT) -f make/font.mk
 font-clean:  ; $(MAKE) -C $(ROOT) -f make/font.mk clean
+font-prune:  ; $(MAKE) -C $(ROOT) -f make/font.mk prune
 font-check:  ; $(MAKE) -C $(ROOT) -f make/font.mk check
 
 # --- app (Svelte) -----------------------------------------------------------
-.PHONY: app app-clean app-check
+.PHONY: app app-clean app-prune app-check
 app:        ; $(MAKE) -C $(ROOT) -f make/app.mk
 app-clean:  ; $(MAKE) -C $(ROOT) -f make/app.mk clean
+app-prune:  ; $(MAKE) -C $(ROOT) -f make/app.mk prune
 app-check:  ; $(MAKE) -C $(ROOT) -f make/app.mk check
 
 # --- country-sizes ----------------------------------------------------------

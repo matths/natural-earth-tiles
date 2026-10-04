@@ -28,6 +28,8 @@ make app         # Svelte 5 app -> ./main.js (Vite bundle)
 make country-sizes # country label sizes -> ./country-sizes.json
 make all         # all modules, in order
 make check       # check the tools every module needs
+make clean       # remove every generated file (rebuild it all with `make all`)
+make prune       # remove only the build caches, keep the built output
 ```
 
 `make` with no target always prints help; pick a module from there. A module is also
@@ -45,17 +47,25 @@ make raster RASTER_MAX_ZOOM=4
 | action                | command                |
 | --------------------- | ---------------------- |
 | help / check          | `make help` · `make check` |
+| everything build / clean / prune | `make all` · `make clean` · `make prune` |
 | vector build / clean / prune / check | `make vector` · `make vector-clean` · `make vector-prune` · `make vector-check` |
-| raster build / clean / check        | `make raster` · `make raster-clean` · `make raster-check` |
-| maplibre-gl build / clean / check   | `make maplibre-gl` · `make maplibre-gl-clean` · `make maplibre-gl-check` |
-| font build / clean / check          | `make font` · `make font-clean` · `make font-check` |
-| country-sizes build / clean / check | `make country-sizes` · `make country-sizes-clean` · `make country-sizes-check` |
+| raster build / clean / prune / check | `make raster` · `make raster-clean` · `make raster-prune` · `make raster-check` |
+| maplibre-gl build / clean / prune / check | `make maplibre-gl` · `make maplibre-gl-clean` · `make maplibre-gl-prune` · `make maplibre-gl-check` |
+| font build / clean / prune / check   | `make font` · `make font-clean` · `make font-prune` · `make font-check` |
+| app build / clean / prune / check    | `make app` · `make app-clean` · `make app-prune` · `make app-check` |
+| country-sizes build / clean / check  | `make country-sizes` · `make country-sizes-clean` · `make country-sizes-check` |
 
-`vector-prune` removes only the vector build cache (keeps `./tiles/`); `vector-clean`
-also removes the published `./tiles/`. `raster-clean` removes `./raster/` + its cache.
-`maplibre-gl-clean` removes `js/`, `css/` and `node_modules/`. `font-clean` removes
-`./font/` plus the `.font-src/` cache.
-`country-sizes-clean` removes `./country-sizes.json`.
+`*-clean` removes a module's published output **and** its build cache; `*-prune` removes
+only the cache, so `./tiles/`, `./raster/`, `./font/`, `js/`, `css/`, `./main.js` stay in
+place and the next build only has to re-download the sources. `country-sizes` has no cache
+of its own (its input is the vector module's `countries.geojson`), so it only has `clean`.
+
+`make clean` and `make prune` do that for **every** module at once. The hand-written
+files (`index.html`, `style.json`, `styles.css`, `src/`, `Makefile`, `README.md`, …) are
+never touched, so `make clean && make all` rebuilds exactly the committed state - at the
+price of re-downloading ~200 MB of Natural Earth data and the Google fonts. Build
+variables pass through to the clean/prune targets too, e.g. `make clean OUT_DIR=/tmp/tiles`
+cleans that output instead.
 
 ## Vector module
 
