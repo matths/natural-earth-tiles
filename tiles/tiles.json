@@ -1,13 +1,13 @@
 {
   "tilejson": "2.2.0",
-  "name": "/Users/matths/Documents/natural-earth-tiles/.vector-src/countries-z8.mbtiles",
-  "description": "/Users/matths/Documents/natural-earth-tiles/.vector-src/countries-z8.mbtiles",
+  "name": "/Users/matths/Documents/natural-earth-tiles/.vector-src/natural-earth-z8.mbtiles",
+  "description": "/Users/matths/Documents/natural-earth-tiles/.vector-src/natural-earth-z8.mbtiles",
   "profile": "mercator",
   "attribution": "Made with <a href='https://www.naturalearthdata.com/'>Natural Earth</a>.",
   "version": "1.0.0",
   "format": "pbf",
   "tiles": [
-    "https://matths.github.io/natural-earth-tiles/tiles/{z}/{x}/{y}.pbf"
+    "{z}/{x}/{y}.pbf"
   ],
   "minzoom": 0,
   "maxzoom": 8,
@@ -15,11 +15,11 @@
     -180.0,
     -85.051129,
     180.0,
-    83.634101
+    85.051129
   ],
   "center": [
-    -71.015625,
-    -54.570024,
+    55.546875,
+    25.163513,
     8.0
   ],
   "vector_layers": [
@@ -196,6 +196,17 @@
         "WOE_ID_EH": "Number",
         "WOE_NOTE": "String",
         "featurecla": "String",
+        "scalerank": "Number"
+      }
+    },
+    {
+      "id": "ocean",
+      "description": "",
+      "minzoom": 0,
+      "maxzoom": 8,
+      "fields": {
+        "featurecla": "String",
+        "min_zoom": "Number",
         "scalerank": "Number"
       }
     }

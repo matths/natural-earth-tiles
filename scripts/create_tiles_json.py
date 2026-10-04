@@ -8,7 +8,14 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
-base_url = 'https://matths.github.io/natural-earth-tiles/tiles/'
+# Empty on purpose: the manifest sits next to the tiles it points at
+# (tiles/tiles.json + tiles/{z}/{x}/{y}.pbf), and MapLibre resolves a relative
+# tile template against the *page* URL - not against the manifest URL. So the
+# committed tiles.json works unchanged on GitHub Pages and behind any local dev
+# server on any port, with nothing to repoint and nothing to toggle.
+# Override with --base-url=https://cdn.example.com/tiles/ when tiles live on a
+# separate host/CDN.
+base_url = ''
 mbtiles_file = None
 metadata_file = os.path.join(ROOT, 'tiles', 'metadata.json')
 tiles_file = os.path.join(ROOT, 'tiles', 'tiles.json')

@@ -6,6 +6,7 @@
 #   make/raster.mk          raster tiles -> ./raster/   (Natural Earth II PNG)
 #   make/maplibre-gl.mk     maplibre-gl npm dist -> js/ + css/
 #   make/font.mk            Noto woff2 font faces -> ./font/  (MapLibre font-faces source)
+#   make/app.mk             Svelte 5 app -> ./main.js (Vite bundle)
 #   make/country-sizes.mk   label sizes -> ./country-sizes.json (from vector data)
 #
 # Usage:
@@ -39,8 +40,7 @@ help:
 	@echo '  vector          vector tiles  -> ./tiles/    (Natural Earth countries, MVT z0-8)'
 	@echo '  raster          raster tiles  -> ./raster/   (Natural Earth II shaded relief, PNG z0-6)'
 	@echo '  maplibre-gl     npm dist of maplibre-gl copied to js/ + css/'
-	@echo '  font            Noto woff2 font faces -> ./font/  (glyph source for labels)'
-	@echo '  country-sizes   country label sizes -> ./country-sizes.json'
+	@echo '  font            Noto woff2 font faces -> ./font/  (glyph source for labels)'    @echo '  app             Svelte 5 app -> ./main.js   (Vite bundle loaded by index.html)'	@echo '  country-sizes   country label sizes -> ./country-sizes.json'
 	@echo ''
 	@echo 'Usage:'
 	@echo '  make <module>                   build one module (its defaults)'
@@ -60,9 +60,9 @@ help:
 	@echo 'A module is also runnable directly: make -f make/vector.mk'
 
 # --- aggregates ------------------------------------------------------------
-all: vector raster maplibre-gl font country-sizes
+all: vector raster maplibre-gl font country-sizes app
 
-check: vector-check raster-check maplibre-gl-check font-check country-sizes-check
+check: vector-check raster-check maplibre-gl-check font-check country-sizes-check app-check
 
 # --- vector -----------------------------------------------------------------
 .PHONY: vector vector-clean vector-prune vector-check
@@ -88,6 +88,12 @@ maplibre-gl-check: ; $(MAKE) -C $(ROOT) -f make/maplibre-gl.mk check
 font:        ; $(MAKE) -C $(ROOT) -f make/font.mk
 font-clean:  ; $(MAKE) -C $(ROOT) -f make/font.mk clean
 font-check:  ; $(MAKE) -C $(ROOT) -f make/font.mk check
+
+# --- app (Svelte) -----------------------------------------------------------
+.PHONY: app app-clean app-check
+app:        ; $(MAKE) -C $(ROOT) -f make/app.mk
+app-clean:  ; $(MAKE) -C $(ROOT) -f make/app.mk clean
+app-check:  ; $(MAKE) -C $(ROOT) -f make/app.mk check
 
 # --- country-sizes ----------------------------------------------------------
 .PHONY: country-sizes country-sizes-clean country-sizes-check

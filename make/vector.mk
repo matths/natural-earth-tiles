@@ -1,8 +1,10 @@
 # natural-earth-tiles - vector tile pyramid build
 #
 # Produces {z}/{x}/{y}.pbf + metadata.json + tiles.json from the Natural Earth
-# 1:10m admin-0 countries shapefile into ./tiles/ (the "countries" source layer
-# behind style.json). Heavy steps are incremental and cached in .vector-src/.
+# 1:10m admin-0 countries (cultural) and ocean (physical) shapefiles into
+# ./tiles/ - the "countries" and "ocean" source layers behind style.json, in one
+# tileset so the water needs no second source. Heavy steps are incremental and
+# cached in .vector-src/.
 #
 # Targets/settings: `make help`. Docs: README.md. Methods: direct | tile-join |
 # mb-util | ogr2ogr (default tile-join, z0-8). Paths are $(ROOT)-anchored, so
@@ -27,8 +29,11 @@ MIN_ZOOM := 0
 # where the finished tiles are published
 OUT_DIR  ?= $(ROOT)/tiles
 OUT      := $(abspath $(OUT_DIR))
-# tiles.json URL prefix
-BASE_URL ?= https://matths.github.io/natural-earth-tiles/tiles/
+# tiles.json URL prefix. Empty = a relative template ("{z}/{x}/{y}.pbf"), which
+# works both on GitHub Pages and behind any local dev server on any port, since
+# MapLibre resolves it against the page URL. Set it only for a CDN, e.g.
+# `make vector BASE_URL=https://cdn.example.com/tiles/`.
+BASE_URL ?=
 
 # ---------------------------------------------------------------------------
 # Validation
@@ -44,14 +49,29 @@ $(error OUT_DIR must not point inside the build cache ($(WORK)) - pick a separat
 endif
 
 # ---------------------------------------------------------------------------
-# Artifacts
+# Artifacts: two Natural Earth 1:10m sources -> one two-layer tileset
 # ---------------------------------------------------------------------------
-ZIP_URL := https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip
-ZIP     := $(WORK)/ne_10m_admin_0_countries.zip
-RAW     := $(WORK)/ne_10m_admin_0_countries
-SHP     := $(RAW)/ne_10m_admin_0_countries.shp
-GEOJSON := $(WORK)/countries.geojson
-MBTILES := $(WORK)/countries-z$(MAX_ZOOM).mbtiles
+# layer names style.json refers to (source "netiles", source-layer ...)
+LAYER_COUNTRIES := countries
+LAYER_OCEAN     := ocean
+
+ADMIN_URL := https://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip
+ADMIN_ZIP := $(WORK)/ne_10m_admin_0_countries.zip
+ADMIN_RAW := $(WORK)/ne_10m_admin_0_countries
+ADMIN_SHP := $(ADMIN_RAW)/ne_10m_admin_0_countries.shp
+
+OCEAN_URL := https://naciscdn.org/naturalearth/10m/physical/ne_10m_ocean.zip
+OCEAN_ZIP := $(WORK)/ne_10m_ocean.zip
+OCEAN_RAW := $(WORK)/ne_10m_ocean
+OCEAN_SHP := $(OCEAN_RAW)/ne_10m_ocean.shp
+
+GEOJSON       := $(WORK)/countries.geojson
+OCEAN_GEOJSON := $(WORK)/ocean.geojson
+# two-layer VRT: gives 'direct' a single dataset whose layers are already named
+# the way style.json expects, instead of ogr2ogr's -nln (one name only).
+SOURCES_VRT := $(WORK)/sources.vrt
+
+MBTILES := $(WORK)/natural-earth-z$(MAX_ZOOM).mbtiles
 BUILD   := $(WORK)/tiles-$(METHOD)-z$(MAX_ZOOM)
 STAMP   := $(WORK)/.stamp-$(METHOD)-z$(MAX_ZOOM)
 
@@ -64,42 +84,77 @@ MB_ARGS := --mbtiles=$(MBTILES)
 endif
 
 # ---------------------------------------------------------------------------
-# 1. Download + unzip the Natural Earth source shapefile
+# 1. Download + unzip the Natural Earth source shapefiles
 # ---------------------------------------------------------------------------
-$(ZIP): | check-deps
+$(ADMIN_ZIP): | check-deps
 	@mkdir -p $(WORK)
-	@echo ">> Downloading $(notdir $(ZIP)) ..."
-	@curl -fL $(ZIP_URL) -o $@
+	@echo ">> Downloading $(notdir $@) ..."
+	@curl -fL $(ADMIN_URL) -o $@
 
-# unzip restores the archive's original (old) mtimes, which would make $(SHP)
-# look perpetually older than the freshly downloaded $(ZIP); touch it so the
+$(OCEAN_ZIP): | check-deps
+	@mkdir -p $(WORK)
+	@echo ">> Downloading $(notdir $@) ..."
+	@curl -fL $(OCEAN_URL) -o $@
+
+# unzip restores the archive's original (old) mtimes, which would make the .shp
+# look perpetually older than the freshly downloaded .zip; touch it so the
 # expensive shp -> geojson -> mbtiles chain only re-runs when data really changed.
-$(SHP): $(ZIP)
-	@echo ">> Unzipping into $(RAW) ..."
-	@rm -rf $(RAW)
-	@mkdir -p $(RAW)
-	@unzip -q $(ZIP) -d $(RAW)
+$(ADMIN_SHP): $(ADMIN_ZIP)
+	@echo ">> Unzipping into $(ADMIN_RAW) ..."
+	@rm -rf $(ADMIN_RAW)
+	@mkdir -p $(ADMIN_RAW)
+	@unzip -q $(ADMIN_ZIP) -d $(ADMIN_RAW)
+	@touch $@
+	@echo ">> Source shapefile: $@"
+
+$(OCEAN_SHP): $(OCEAN_ZIP)
+	@echo ">> Unzipping into $(OCEAN_RAW) ..."
+	@rm -rf $(OCEAN_RAW)
+	@mkdir -p $(OCEAN_RAW)
+	@unzip -q $(OCEAN_ZIP) -d $(OCEAN_RAW)
 	@touch $@
 	@echo ">> Source shapefile: $@"
 
 # ---------------------------------------------------------------------------
 # 2. shp -> GeoJSON
 # ---------------------------------------------------------------------------
-$(GEOJSON): $(SHP)
+$(GEOJSON): $(ADMIN_SHP)
 	@echo ">> ogr2ogr shp -> GeoJSON"
-	@ogr2ogr -f GeoJSON $@ $(SHP)
+	@ogr2ogr -f GeoJSON $@ $(ADMIN_SHP)
 
-# Public: build only the source GeoJSON (used by the country-sizes module,
+$(OCEAN_GEOJSON): $(OCEAN_SHP)
+	@echo ">> ogr2ogr shp -> GeoJSON"
+	@ogr2ogr -f GeoJSON $@ $(OCEAN_SHP)
+
+# Only the 'direct' method needs this, but writing it is instant and keeps the
+# shapefile -> layer-name mapping next to the sources it wraps. SrcLayer is the
+# OGR layer name inside a shapefile, i.e. the file's basename.
+$(SOURCES_VRT): $(ADMIN_SHP) $(OCEAN_SHP)
+	@echo ">> writing $(notdir $@) ($(LAYER_COUNTRIES) + $(LAYER_OCEAN))"
+	@printf '%s\n' \
+		'<OGRVRTDataSource>' \
+		'  <OGRVRTLayer name="$(LAYER_COUNTRIES)">' \
+		'    <SrcDataSource relativeToVRT="0">$(ADMIN_SHP)</SrcDataSource>' \
+		'    <SrcLayer>$(basename $(notdir $(ADMIN_SHP)))</SrcLayer>' \
+		'  </OGRVRTLayer>' \
+		'  <OGRVRTLayer name="$(LAYER_OCEAN)">' \
+		'    <SrcDataSource relativeToVRT="0">$(OCEAN_SHP)</SrcDataSource>' \
+		'    <SrcLayer>$(basename $(notdir $(OCEAN_SHP)))</SrcLayer>' \
+		'  </OGRVRTLayer>' \
+		'</OGRVRTDataSource>' > $@
+
+# Public: build only the countries GeoJSON (used by the country-sizes module,
 # which does not need the tiles).
 .PHONY: geojson
 geojson: $(GEOJSON)
 
 # ---------------------------------------------------------------------------
-# 3. tippecanoe -> .mbtiles
+# 3. tippecanoe -> .mbtiles (one tileset, one layer per source)
 # ---------------------------------------------------------------------------
-$(MBTILES): $(GEOJSON)
-	@echo ">> tippecanoe -> $(notdir $@) (z$(MIN_ZOOM)-$(MAX_ZOOM))"
-	@tippecanoe -o $@ -z $(MAX_ZOOM) --drop-densest-as-needed --extend-zooms-if-still-dropping $(GEOJSON)
+$(MBTILES): $(GEOJSON) $(OCEAN_GEOJSON)
+	@echo ">> tippecanoe -> $(notdir $@) (z$(MIN_ZOOM)-$(MAX_ZOOM): $(LAYER_COUNTRIES) + $(LAYER_OCEAN))"
+	@tippecanoe -o $@ -z $(MAX_ZOOM) --drop-densest-as-needed --extend-zooms-if-still-dropping \
+		-L $(LAYER_COUNTRIES):$(GEOJSON) -L $(LAYER_OCEAN):$(OCEAN_GEOJSON)
 
 # ---------------------------------------------------------------------------
 # 4. Extract {z}/{x}/{y}.pbf with the chosen method. Each method+zoom builds its
@@ -108,12 +163,13 @@ $(MBTILES): $(GEOJSON)
 #    only mb-util needs the gzip-decompress helper.
 # ---------------------------------------------------------------------------
 ifeq ($(METHOD),direct)
-# ogr2ogr tiles the shapefile straight to MVT; -nln countries keeps the layer
-# name style.json expects (GDAL would otherwise use the .shp basename).
-$(STAMP): $(SHP) | check-deps
+# ogr2ogr tiles the shapefiles straight to MVT. The two-layer VRT is what gives
+# the layers the names style.json expects (GDAL would otherwise use the .shp
+# basenames, and -nln can only name a single layer).
+$(STAMP): $(SOURCES_VRT) | check-deps
 	@echo ">> ogr2ogr (direct) shp -> MVT $(BUILD)  (COMPRESS=NO)"
 	@rm -rf $(BUILD)
-	@ogr2ogr -f MVT $(BUILD) $(SHP) -nln countries \
+	@ogr2ogr -f MVT $(BUILD) $(SOURCES_VRT) \
 		-dsco MINZOOM=$(MIN_ZOOM) -dsco MAXZOOM=$(MAX_ZOOM) -dsco COMPRESS=NO
 	@touch $@
 

@@ -46,6 +46,7 @@ add_pkg() {
 tools() {
   case "$1" in
     country-sizes) echo node ;;
+    app)           echo node npm ;;
     font)          echo curl node ;;
     maplibre-gl)   echo node npm ;;
     raster)        echo curl unzip python3 gdalinfo gdal_translate gdal2tiles.py ;;

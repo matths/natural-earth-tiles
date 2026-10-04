@@ -1,0 +1,251 @@
+{
+  "id": "countries",
+  "name": "Countries",
+  "metadata": {
+    "styleVariants": {
+      "default": "mixed",
+      "variants": [
+        {
+          "id": "vector",
+          "label": "Vector tiles",
+          "hint": "Countries drawn from the MVT tiles"
+        },
+        {
+          "id": "raster",
+          "label": "Raster tiles",
+          "hint": "Shaded relief and labels only",
+          "layers": {
+            "countries-fill": { "paint": { "fill-opacity": 0 } },
+            "countries-line": { "paint": { "line-opacity": 0 } },
+            "countries-line-highlight": { "paint": { "line-opacity": 0 } },
+            "ne2-shaded": { "paint": { "raster-opacity": 1 } }
+          }
+        },
+        {
+          "id": "mixed",
+          "label": "Mixed",
+          "hint": "Grey relief shining through the vector fill",
+          "layers": {
+            "countries-fill": { "paint": { 
+              "fill-color": [
+                "case",
+                ["boolean", ["feature-state", "hover"], false],
+                "#e83",
+                "#39c"
+              ],
+              "fill-opacity": 0.3
+            } },
+            "ocean-fill": { "paint": {
+              "fill-color": "#39c",
+              "fill-opacity": 0.5
+            } },
+            "ne2-shaded": {
+              "paint": {
+                "raster-opacity": 0.8,
+                "raster-saturation": -1,
+                "raster-contrast": 0.5,
+                "raster-brightness-min": 0,
+                "raster-brightness-max": 0.95,
+                "raster-fade-duration": 300
+              }
+            }
+          }
+        },
+        {
+          "id": "pc-globe",
+          "label": "PC Globe",
+          "hint": "White land, dark outlines, labels on hover",
+          "layers": {
+            "background": { "paint": { "background-color": "#6ba8f9" } },
+            "countries-fill": { "paint": { "fill-color": "#fff" } },
+            "countries-line": {
+              "paint": {
+                "line-color": "#333",
+                "line-width": 1,
+                "line-dasharray": [3, 3]
+              }
+            },
+            "countries-line-highlight": {
+              "paint": {
+                "line-color": "#333",
+                "line-width": 1.8
+              }
+            },
+            "countries-label": {
+              "paint": {
+                "text-color": "#333",
+                "text-opacity": [
+                  "case",
+                  ["boolean", ["feature-state", "hover"], false],
+                  1,
+                  0
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "version": 8,
+  "center": [12, 38],
+  "zoom": 1.0,
+  "pitch": 0,
+  "bearing": 0,
+  "projection": { "type": "mercator" },
+  "transition": { "duration": 400, "delay": 0 },
+  "sources": {
+    "netiles": {
+      "url": "tiles/tiles.json",
+      "type": "vector",
+      "promoteId": "ADM0_A3"
+    },
+    "labels": {
+      "type": "geojson",
+      "promoteId": "ADM0_A3",
+      "data": {
+        "type": "FeatureCollection",
+        "features": []
+      }
+    },
+    "ne2_shaded": {
+      "type": "raster",
+      "tiles": ["raster/{z}/{x}/{y}.png"],
+      "tileSize": 256,
+      "minzoom": 0,
+      "maxzoom": 6
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#39c"
+      }
+    },
+    {
+      "id": "ne2-shaded",
+      "type": "raster",
+      "source": "ne2_shaded",
+      "paint": {
+        "raster-opacity": 0,
+        "raster-saturation": 0,
+        "raster-contrast": 0,
+        "raster-brightness-min": 0,
+        "raster-brightness-max": 1,
+        "raster-hue-rotate": 0,
+        "raster-fade-duration": 300
+      }
+    },
+    {
+      "id": "ocean-fill",
+      "type": "fill",
+      "source": "netiles",
+      "source-layer": "ocean",
+      "paint": {
+        "fill-color": "#fff",
+        "fill-opacity": 0
+      }
+    },
+    {
+      "id": "countries-fill",
+      "type": "fill",
+      "source": "netiles",
+      "source-layer": "countries",
+      "paint": {
+        "fill-color": [
+          "case",
+          ["boolean", ["feature-state", "hover"], false],
+          "#f7e5e5",
+          "#e5f0ff"
+        ],
+        "fill-opacity": 1
+      }
+    },
+    {
+      "id": "countries-line",
+      "type": "line",
+      "source": "netiles",
+      "source-layer": "countries",
+      "paint": {
+        "line-color": "#39c",
+        "line-width": 1.2,
+        "line-opacity": 1
+      },
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      }
+    },
+    {
+      "id": "countries-line-highlight",
+      "type": "line",
+      "source": "netiles",
+      "source-layer": "countries",
+      "paint": {
+        "line-color": "#e83",
+        "line-width": 1.2,
+        "line-opacity": [
+          "case",
+          ["boolean", ["feature-state", "hover"], false],
+          1,
+          0
+        ]
+      },
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "visible"
+      }
+    },
+    {
+      "id": "countries-label",
+      "type": "symbol",
+      "source": "labels",
+      "layout": {
+        "visibility": "visible",
+        "text-field": ["get", "NAME"],
+        "text-size": [
+          "interpolate",
+          ["exponential", 2],
+          ["zoom"],
+          0,
+          ["*", ["coalesce", ["get", "SIZE"], 0.85], 10],
+          3,
+          ["*", ["coalesce", ["get", "SIZE"], 0.85], 12],
+          8,
+          ["*", ["coalesce", ["get", "SIZE"], 0.85], 150]
+        ],
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-anchor": "center",
+        "text-allow-overlap": false,
+        "text-optional": true
+      },
+      "paint": {
+        "text-color": [
+          "case",
+          ["boolean", ["feature-state", "hover"], false],
+          "#c2590a",
+          "#14618f"
+        ],
+        "text-opacity": 0.8,
+        "text-halo-color": "#fff",
+        "text-halo-width": [
+          "interpolate",
+          ["exponential", 2],
+          ["zoom"],
+          0,
+          0.5,
+          3,
+          0.9,
+          8,
+          3
+        ]
+      }
+    }
+  ]
+}
